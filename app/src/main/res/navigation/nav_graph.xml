@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/wizardsFragment">
+
+    <fragment
+        android:id="@+id/wizardsFragment"
+        android:name="com.cevlikalprn.harrypotterwizards.WizardsFragment"
+        android:label="fragment_wizards"
+        tools:layout="@layout/fragment_wizards" />
+    <fragment
+        android:id="@+id/wizardDetailsFragment"
+        android:name="com.cevlikalprn.harrypotterwizards.WizardDetailsFragment"
+        android:label="fragment_wizard_details"
+        tools:layout="@layout/fragment_wizard_details" />
+</navigation>
