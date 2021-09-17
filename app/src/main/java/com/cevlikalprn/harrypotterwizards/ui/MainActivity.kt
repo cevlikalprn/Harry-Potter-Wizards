@@ -1,7 +1,8 @@
-package com.cevlikalprn.harrypotterwizards
+package com.cevlikalprn.harrypotterwizards.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.cevlikalprn.harrypotterwizards.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

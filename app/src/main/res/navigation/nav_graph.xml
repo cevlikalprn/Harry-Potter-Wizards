@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/wizardsFragment"
-        android:name="com.cevlikalprn.harrypotterwizards.WizardsFragment"
+        android:name="com.cevlikalprn.harrypotterwizards.ui.fragments.WizardsFragment"
         android:label="fragment_wizards"
         tools:layout="@layout/fragment_wizards" />
     <fragment
         android:id="@+id/wizardDetailsFragment"
-        android:name="com.cevlikalprn.harrypotterwizards.WizardDetailsFragment"
+        android:name="com.cevlikalprn.harrypotterwizards.ui.fragments.WizardDetailsFragment"
         android:label="fragment_wizard_details"
         tools:layout="@layout/fragment_wizard_details" />
 </navigation>
