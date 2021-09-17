@@ -1,14 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WizardDetailsFragment">
+    tools:context=".WizardDetailsFragment"
+    android:gravity="center"
+    android:background="@color/harry_potter_app_background_color">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Wizard Details Fragment" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/character_image_view"
+            android:layout_width="280dp"
+            android:layout_height="280dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/name_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/aguafina_script"
+            android:textColor="@color/text_view_color"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/character_image_view"
+            app:layout_constraintStart_toStartOf="@+id/character_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/character_image_view"
+            tools:text="Harry Potter" />
+
+
+        <TextView
+            android:id="@+id/species_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/aguafina_script"
+            android:textColor="@color/text_view_color"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/name_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/name_text_view"
+            tools:text="Human" />
+
+
+        <TextView
+            android:id="@+id/house_name_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/aguafina_script"
+            android:textColor="@color/text_view_color"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/species_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/species_text_view"
+            tools:text="Gryffindor" />
+
+        <TextView
+            android:id="@+id/ancestry_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/aguafina_script"
+            tools:text="half-blood"
+            android:textColor="@color/text_view_color"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/house_name_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/house_name_text_view" />
+
+        <TextView
+            android:id="@+id/alive_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/aguafina_script"
+            android:layout_marginTop="16dp"
+            tools:text="Alive"
+            android:textColor="@color/text_view_color"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/ancestry_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/ancestry_text_view" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+</LinearLayout>
