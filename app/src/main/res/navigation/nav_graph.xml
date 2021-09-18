@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/wizardsFragment"
-        android:name="com.cevlikalprn.harrypotterwizards.ui.fragments.WizardsFragment"
+        android:name="com.cevlikalprn.harrypotterwizards.ui.fragments.WizardListFragment"
         android:label="fragment_wizards"
         tools:layout="@layout/fragment_wizards" />
     <fragment
