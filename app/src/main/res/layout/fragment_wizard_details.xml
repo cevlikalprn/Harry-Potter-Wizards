@@ -15,14 +15,14 @@
         android:background="@color/hp_app_color">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="4dp">
 
             <ImageView
                 android:id="@+id/character_image_view"
-                android:layout_width="280dp"
-                android:layout_height="280dp"
+                android:layout_width="240dp"
+                android:layout_height="240dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
