@@ -21,6 +21,7 @@
         tools:layout="@layout/fragment_wizard_details" >
         <argument
             android:name="wizard"
-            app:argType="com.cevlikalprn.harrypotterwizards.models.WizardItem" />
+            app:argType="com.cevlikalprn.harrypotterwizards.models.WizardItem"
+            app:nullable="true"/>
     </fragment>
 </navigation>
