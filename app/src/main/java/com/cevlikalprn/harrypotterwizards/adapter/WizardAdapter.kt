@@ -1,17 +1,20 @@
 package com.cevlikalprn.harrypotterwizards.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.cevlikalprn.harrypotterwizards.R
 import com.cevlikalprn.harrypotterwizards.databinding.WizardsRowLayoutBinding
 import com.cevlikalprn.harrypotterwizards.models.WizardItem
+import com.cevlikalprn.harrypotterwizards.ui.fragments.WizardListFragmentDirections
 import com.squareup.picasso.Picasso
 
-class WizardAdapter : RecyclerView.Adapter<WizardAdapter.MyViewHolder>() {
+class WizardAdapter() : RecyclerView.Adapter<WizardAdapter.MyViewHolder>() {
 
     var data = listOf<WizardItem>()
         set(value) {
@@ -44,6 +47,11 @@ class WizardAdapter : RecyclerView.Adapter<WizardAdapter.MyViewHolder>() {
         wizardName.text = item.name
         yearOfBirth.text = item.yearOfBirth
         houseName.text = item.house
+        
+        holder.itemView.setOnClickListener { view ->
+            view.findNavController().navigate(WizardListFragmentDirections.actionWizardsFragmentToWizardDetailsFragment(item))
+        }
+
     }
 
     override fun getItemCount(): Int = data.size
