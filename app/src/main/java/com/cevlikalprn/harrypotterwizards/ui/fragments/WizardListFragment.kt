@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.cevlikalprn.harrypotterwizards.R
 import com.cevlikalprn.harrypotterwizards.adapter.WizardAdapter
 import com.cevlikalprn.harrypotterwizards.databinding.FragmentWizardsBinding
-import com.cevlikalprn.harrypotterwizards.network.HarryPotterApi
 import com.cevlikalprn.harrypotterwizards.repository.WizardRepository
 import com.cevlikalprn.harrypotterwizards.viewmodel.WizardListViewModel
 import com.cevlikalprn.harrypotterwizards.viewmodel.WizardListViewModelFactory
@@ -43,6 +42,15 @@ class WizardListFragment : Fragment() {
             adapter.data = wizards
         }
 
+        viewModel.errorMessage.observe(viewLifecycleOwner){ errorMessage ->
+            if (errorMessage.isNotEmpty()){
+                binding.apply {
+                    errorMessageTextView.text = errorMessage
+                    moodBadImage.visibility = View.VISIBLE
+                    errorMessageTextView.visibility = View.VISIBLE
+                }
+            }
+        }
 
     }
 

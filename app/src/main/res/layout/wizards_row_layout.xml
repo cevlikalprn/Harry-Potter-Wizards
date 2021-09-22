@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/aguafina_script"
                 android:textSize="24sp"
-                android:textColor="@color/text_view_color"
+                android:textColor="@color/hp_text_color"
                 tools:text="Wizard Name" />
 
             <TextView
@@ -51,7 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
-                android:textColor="@color/text_view_color"
+                android:textColor="@color/hp_text_color"
                 android:fontFamily="@font/aguafina_script"
                 tools:text="Year Of Birth" />
 
@@ -60,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
-                android:textColor="@color/text_view_color"
+                android:textColor="@color/hp_text_color"
                 android:fontFamily="@font/aguafina_script"
                 tools:text="House Name" />
 

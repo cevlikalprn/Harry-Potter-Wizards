@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.fragments.WizardListFragment"
-        android:background="@color/harry_potter_app_background_color">
+        android:background="@color/hp_app_color">
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -25,6 +25,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
+        <ImageView
+            android:id="@+id/mood_bad_image"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.30"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_mood_bad"
+            app:tint="@color/hp_text_color" />
+
+        <TextView
+            android:id="@+id/error_message_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            android:textColor="@color/hp_text_color"
+            android:visibility="gone"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mood_bad_image"
+            tools:text="Error Message" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

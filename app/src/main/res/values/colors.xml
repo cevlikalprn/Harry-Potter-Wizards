@@ -8,6 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="harry_potter_app_background_color">#AE0001</color>
-    <color name="text_view_color">#EEBA30</color>
+    <color name="hp_app_color">#AE0001</color>
+    <color name="hp_text_color">#EEBA30</color>
 </resources>

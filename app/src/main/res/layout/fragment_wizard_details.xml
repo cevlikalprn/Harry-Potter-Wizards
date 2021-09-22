@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.WizardDetailsFragment"
     android:gravity="center"
-    android:background="@color/harry_potter_app_background_color">
+    android:background="@color/hp_app_color">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/aguafina_script"
-            android:textColor="@color/text_view_color"
+            android:textColor="@color/hp_text_color"
             android:textSize="32sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/character_image_view"
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/aguafina_script"
-            android:textColor="@color/text_view_color"
+            android:textColor="@color/hp_text_color"
             android:textSize="32sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/name_text_view"
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/aguafina_script"
-            android:textColor="@color/text_view_color"
+            android:textColor="@color/hp_text_color"
             android:textSize="32sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/species_text_view"
@@ -73,7 +73,7 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/aguafina_script"
             tools:text="half-blood"
-            android:textColor="@color/text_view_color"
+            android:textColor="@color/hp_text_color"
             android:textSize="32sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/house_name_text_view"
@@ -86,7 +86,7 @@
             android:fontFamily="@font/aguafina_script"
             android:layout_marginTop="16dp"
             tools:text="Alive"
-            android:textColor="@color/text_view_color"
+            android:textColor="@color/hp_text_color"
             android:textSize="32sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/ancestry_text_view"
