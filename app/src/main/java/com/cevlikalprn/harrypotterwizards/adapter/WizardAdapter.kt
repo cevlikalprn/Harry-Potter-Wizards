@@ -22,36 +22,42 @@ class WizardAdapter() : RecyclerView.Adapter<WizardAdapter.MyViewHolder>() {
             notifyDataSetChanged()
         }
 
-    class MyViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
+    class MyViewHolder(private val binding: WizardsRowLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(item: WizardItem) {
+
+            binding.apply {
+                wizardNameTextView.text = item.name
+                yearOfBirthTextView.text = item.yearOfBirth
+                houseTextView.text = item.house
+                Picasso.get().load(item.image).into(wizardImageView)
+            }
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): MyViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = WizardsRowLayoutBinding.inflate(layoutInflater, parent, false)
+                return MyViewHolder(binding)
+            }
+        }
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val view = layoutInflater.inflate(
-            R.layout.wizards_row_layout,
-            parent,
-            false
-        )
-        return MyViewHolder(view)
+        return MyViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = data[position]
-        val image = holder.itemView.findViewById(R.id.wizard_image_view) as ImageView
-        val wizardName = holder.itemView.findViewById(R.id.wizard_name_text_view) as TextView
-        val yearOfBirth = holder.itemView.findViewById(R.id.year_of_birth_text_view) as TextView
-        val houseName = holder.itemView.findViewById(R.id.house_text_view) as TextView
-        Picasso.get().load(item.image).into(image)
-        wizardName.text = item.name
-        yearOfBirth.text = item.yearOfBirth
-        houseName.text = item.house
-        
-        holder.itemView.setOnClickListener { view ->
-            view.findNavController().navigate(WizardListFragmentDirections.actionWizardsFragmentToWizardDetailsFragment(item))
-        }
+        holder.bind(item)
 
+        holder.itemView.setOnClickListener { view ->
+            view.findNavController().navigate(
+                WizardListFragmentDirections.actionWizardsFragmentToWizardDetailsFragment(item)
+            )
+        }
     }
 
     override fun getItemCount(): Int = data.size
