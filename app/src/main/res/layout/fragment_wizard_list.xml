@@ -51,7 +51,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mood_bad_image"
-            tools:text="Error Message" />
+            tools:text="Not Found" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

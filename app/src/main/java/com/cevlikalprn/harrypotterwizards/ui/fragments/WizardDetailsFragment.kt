@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.cevlikalprn.harrypotterwizards.R
 import com.cevlikalprn.harrypotterwizards.databinding.FragmentWizardDetailsBinding
 import com.cevlikalprn.harrypotterwizards.models.WizardItem
+import com.cevlikalprn.harrypotterwizards.viewmodel.WizardDetailsViewModel
 import com.squareup.picasso.Picasso
 
 class WizardDetailsFragment : Fragment() {
@@ -31,23 +33,18 @@ class WizardDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val viewModel: WizardDetailsViewModel = ViewModelProvider(this).get(WizardDetailsViewModel::class.java)
+
         val wizard = args.wizard
         if (wizard != null) {
-            showWizardInformation(wizard)
+            viewModel.wizard.value = wizard
         }
+
+        //binding
+        binding.lifecycleOwner = this
+        binding.viewmodel = viewModel
 
     }
 
-
-    private fun showWizardInformation(wizard: WizardItem) {
-        binding.apply {
-            nameTextView.text = wizard.name
-            aliveTextView.text = if (wizard.alive) "Yes" else "No"
-            ancestryTextView.text = wizard.ancestry
-            houseNameTextView.text = wizard.house
-            speciesTextView.text = wizard.species
-            Picasso.get().load(wizard.image).into(characterImageView)
-        }
-    }
 
 }
