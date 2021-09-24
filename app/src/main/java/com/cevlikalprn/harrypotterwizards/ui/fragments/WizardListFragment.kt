@@ -31,9 +31,11 @@ class WizardListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val appContainer = (activity?.application as MyApplication).appContainer
-        val viewModelFactory = WizardListViewModelFactory(appContainer.wizardRepository)
         val viewModel =
-            ViewModelProvider(this, viewModelFactory).get(WizardListViewModel::class.java)
+            ViewModelProvider(
+                this,
+                appContainer.wizardListViewModelFactory
+            ).get(WizardListViewModel::class.java)
 
         //binding
         binding.lifecycleOwner = this
