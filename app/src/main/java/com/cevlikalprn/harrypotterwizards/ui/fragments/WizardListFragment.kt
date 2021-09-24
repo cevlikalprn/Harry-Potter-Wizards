@@ -36,6 +36,9 @@ class WizardListFragment : Fragment() {
         val viewModel =
             ViewModelProvider(this, viewModelFactory).get(WizardListViewModel::class.java)
 
+        //binding
+        binding.lifecycleOwner = this
+        binding.viewmodel = viewModel
 
         //adapter
         val adapter = WizardAdapter()
@@ -44,17 +47,6 @@ class WizardListFragment : Fragment() {
         //wizards
         viewModel.wizards.observe(viewLifecycleOwner) { wizards ->
             adapter.data = wizards
-        }
-
-        //error message
-        viewModel.errorMessage.observe(viewLifecycleOwner){ errorMessage ->
-            if (errorMessage.isNotEmpty()){
-                binding.apply {
-                    errorMessageTextView.text = errorMessage
-                    moodBadImage.visibility = View.VISIBLE
-                    errorMessageTextView.visibility = View.VISIBLE
-                }
-            }
         }
 
     }
