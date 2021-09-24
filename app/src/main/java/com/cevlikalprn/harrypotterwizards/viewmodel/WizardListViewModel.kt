@@ -5,9 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cevlikalprn.harrypotterwizards.models.Wizard
-import com.cevlikalprn.harrypotterwizards.models.WizardItem
-import com.cevlikalprn.harrypotterwizards.network.HarryPotterApi
-import com.cevlikalprn.harrypotterwizards.repository.WizardRepository
+import com.cevlikalprn.harrypotterwizards.data.repository.WizardRepository
 import kotlinx.coroutines.launch
 import java.lang.Exception
 

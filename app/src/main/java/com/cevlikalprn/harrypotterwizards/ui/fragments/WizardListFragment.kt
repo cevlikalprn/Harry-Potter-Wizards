@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.cevlikalprn.harrypotterwizards.R
 import com.cevlikalprn.harrypotterwizards.adapter.WizardAdapter
 import com.cevlikalprn.harrypotterwizards.databinding.FragmentWizardListBinding
-import com.cevlikalprn.harrypotterwizards.repository.WizardRepository
+import com.cevlikalprn.harrypotterwizards.di.MyApplication
 import com.cevlikalprn.harrypotterwizards.viewmodel.WizardListViewModel
 import com.cevlikalprn.harrypotterwizards.viewmodel.WizardListViewModelFactory
 
@@ -30,9 +30,8 @@ class WizardListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //dependencies
-        val repository = WizardRepository()
-        val viewModelFactory = WizardListViewModelFactory(repository)
+        val appContainer = (activity?.application as MyApplication).appContainer
+        val viewModelFactory = WizardListViewModelFactory(appContainer.wizardRepository)
         val viewModel =
             ViewModelProvider(this, viewModelFactory).get(WizardListViewModel::class.java)
 
