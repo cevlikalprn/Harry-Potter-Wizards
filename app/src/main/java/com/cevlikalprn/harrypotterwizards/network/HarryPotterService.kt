@@ -16,11 +16,13 @@ interface HarryPotterService {
 }
 
 
-object HarryPotterApi{
+object HarryPotterApi {
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val service: HarryPotterService = retrofit.create(HarryPotterService::class.java)
+    val service: HarryPotterService by lazy {
+        retrofit.create(HarryPotterService::class.java)
+    }
 }
