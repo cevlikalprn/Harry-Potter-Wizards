@@ -1,4 +1,4 @@
-package com.cevlikalprn.harrypotterwizards.ui.fragments
+package com.cevlikalprn.harrypotterwizards.detail
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.cevlikalprn.harrypotterwizards.R
 import com.cevlikalprn.harrypotterwizards.databinding.FragmentWizardDetailsBinding
-import com.cevlikalprn.harrypotterwizards.viewmodel.WizardDetailsViewModel
 
 class WizardDetailsFragment : Fragment() {
 

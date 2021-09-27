@@ -7,14 +7,14 @@
 
         <variable
             name="viewmodel"
-            type="com.cevlikalprn.harrypotterwizards.viewmodel.WizardListViewModel" />
+            type="com.cevlikalprn.harrypotterwizards.list.WizardListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/hp_app_color"
-        tools:context=".ui.fragments.WizardListFragment">
+        tools:context=".list.WizardListFragment">
 
 
         <androidx.recyclerview.widget.RecyclerView

@@ -7,7 +7,7 @@
 
         <variable
             name="viewmodel"
-            type="com.cevlikalprn.harrypotterwizards.viewmodel.WizardDetailsViewModel" />
+            type="com.cevlikalprn.harrypotterwizards.detail.WizardDetailsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:background="@color/hp_app_color"
         android:padding="4dp"
-        tools:context=".ui.fragments.WizardDetailsFragment">
+        tools:context=".detail.WizardDetailsFragment">
 
         <ImageView
             android:id="@+id/character_image_view"

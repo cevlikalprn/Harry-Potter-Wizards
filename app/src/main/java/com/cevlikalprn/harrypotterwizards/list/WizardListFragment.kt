@@ -1,4 +1,4 @@
-package com.cevlikalprn.harrypotterwizards.ui.fragments
+package com.cevlikalprn.harrypotterwizards.list
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,8 +11,6 @@ import com.cevlikalprn.harrypotterwizards.R
 import com.cevlikalprn.harrypotterwizards.adapter.WizardAdapter
 import com.cevlikalprn.harrypotterwizards.databinding.FragmentWizardListBinding
 import com.cevlikalprn.harrypotterwizards.di.MyApplication
-import com.cevlikalprn.harrypotterwizards.viewmodel.WizardListViewModel
-import com.cevlikalprn.harrypotterwizards.viewmodel.WizardListViewModelFactory
 
 class WizardListFragment : Fragment() {
 

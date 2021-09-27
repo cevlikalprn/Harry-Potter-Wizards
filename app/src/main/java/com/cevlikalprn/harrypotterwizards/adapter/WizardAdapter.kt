@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.cevlikalprn.harrypotterwizards.databinding.WizardsRowLayoutBinding
-import com.cevlikalprn.harrypotterwizards.models.Wizard
-import com.cevlikalprn.harrypotterwizards.ui.fragments.WizardListFragmentDirections
+import com.cevlikalprn.harrypotterwizards.model.Wizard
+import com.cevlikalprn.harrypotterwizards.list.WizardListFragmentDirections
 import com.squareup.picasso.Picasso
 
 class WizardAdapter() : RecyclerView.Adapter<WizardAdapter.MyViewHolder>() {

@@ -1,4 +1,4 @@
-package com.cevlikalprn.harrypotterwizards.viewmodel
+package com.cevlikalprn.harrypotterwizards.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

@@ -1,4 +1,4 @@
-package com.cevlikalprn.harrypotterwizards.models
+package com.cevlikalprn.harrypotterwizards.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
