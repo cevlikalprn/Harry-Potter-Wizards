@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Harry Potter Wizards</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="alive">Alive</string>
+    <string name="not_alive">Not Alive</string>
 </resources>
