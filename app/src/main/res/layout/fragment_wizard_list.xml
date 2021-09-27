@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewmodel"
             type="com.cevlikalprn.harrypotterwizards.viewmodel.WizardListViewModel" />
@@ -12,8 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.fragments.WizardListFragment"
-        android:background="@color/hp_app_color">
+        android:background="@color/hp_app_color"
+        tools:context=".ui.fragments.WizardListFragment">
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -30,14 +31,14 @@
 
         <ImageView
             android:id="@+id/mood_bad_image"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
+            android:layout_width="@dimen/error_message_image_width_size"
+            android:layout_height="@dimen/error_message_image_height_size"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.30"
-            android:visibility="gone"
             app:showErrorMessageIcon="@{viewmodel.errorMessage}"
             app:srcCompat="@drawable/ic_mood_bad"
             app:tint="@color/hp_text_color" />
@@ -46,15 +47,15 @@
             android:id="@+id/error_message_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="48sp"
-            android:textStyle="bold"
-            android:textColor="@color/hp_text_color"
-            android:visibility="gone"
-            app:showErrorMessageText="@{viewmodel.errorMessage}"
             android:layout_marginTop="16dp"
+            android:textColor="@color/hp_text_color"
+            android:textSize="@dimen/error_message_text_size"
+            android:textStyle="bold"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mood_bad_image"
+            app:showErrorMessageText="@{viewmodel.errorMessage}"
             tools:text="Not Found" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

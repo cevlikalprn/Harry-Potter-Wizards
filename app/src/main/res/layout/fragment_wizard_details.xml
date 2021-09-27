@@ -4,104 +4,97 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewmodel"
             type="com.cevlikalprn.harrypotterwizards.viewmodel.WizardDetailsViewModel" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.fragments.WizardDetailsFragment"
-        android:gravity="center"
-        android:background="@color/hp_app_color">
+        android:background="@color/hp_app_color"
+        android:padding="4dp"
+        tools:context=".ui.fragments.WizardDetailsFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/character_image_view"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:layout_marginBottom="24dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/name_text_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:setTheWizardImageUrl="@{viewmodel.wizard.image}"
+            tools:src="@tools:sample/avatars" />
+
+
+        <TextView
+            android:id="@+id/name_text_view"
+            style="@style/details_screen_text_style"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="4dp">
+            app:layout_constraintBottom_toTopOf="@+id/species_text_view"
+            app:layout_constraintEnd_toEndOf="@+id/character_image_view"
+            app:layout_constraintStart_toStartOf="@+id/character_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/character_image_view"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:text="@{viewmodel.wizard.name}"
+            tools:text="Name" />
 
-            <ImageView
-                android:id="@+id/character_image_view"
-                android:layout_width="240dp"
-                android:layout_height="240dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@tools:sample/avatars"
-                app:setTheWizardImageUrl="@{viewmodel.wizard.image}"
-                android:scaleType="centerCrop" />
+        <TextView
+            android:id="@+id/species_text_view"
+            style="@style/details_screen_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/house_name_text_view"
+            app:layout_constraintEnd_toEndOf="@+id/name_text_view"
+            app:layout_constraintStart_toStartOf="@+id/name_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/name_text_view"
+            app:text="@{viewmodel.wizard.species}"
+            tools:text="Species" />
 
-            <TextView
-                android:id="@+id/name_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:fontFamily="@font/aguafina_script"
-                android:textColor="@color/hp_text_color"
-                android:textSize="32sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/character_image_view"
-                app:layout_constraintStart_toStartOf="@+id/character_image_view"
-                app:layout_constraintTop_toBottomOf="@+id/character_image_view"
-                app:text="@{viewmodel.wizard.name}" />
+        <TextView
+            android:id="@+id/house_name_text_view"
+            style="@style/details_screen_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/ancestry_text_view"
+            app:layout_constraintEnd_toEndOf="@+id/species_text_view"
+            app:layout_constraintStart_toStartOf="@+id/species_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/species_text_view"
+            app:text="@{viewmodel.wizard.house}"
+            tools:text="House" />
 
+        <TextView
+            android:id="@+id/ancestry_text_view"
+            style="@style/details_screen_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/alive_text_view"
+            app:layout_constraintEnd_toEndOf="@+id/house_name_text_view"
+            app:layout_constraintStart_toStartOf="@+id/house_name_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/house_name_text_view"
+            app:text="@{viewmodel.wizard.ancestry}"
+            tools:text="Ancestry" />
 
-            <TextView
-                android:id="@+id/species_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/aguafina_script"
-                android:textColor="@color/hp_text_color"
-                android:textSize="32sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/name_text_view"
-                app:layout_constraintTop_toBottomOf="@+id/name_text_view"
-                app:text="@{viewmodel.wizard.species}" />
+        <TextView
+            android:id="@+id/alive_text_view"
+            style="@style/details_screen_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:isTheWizardAlive="@{viewmodel.wizard.alive}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/ancestry_text_view"
+            app:layout_constraintStart_toStartOf="@+id/ancestry_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/ancestry_text_view"
+            tools:text="IsWizardAlive" />
 
-
-            <TextView
-                android:id="@+id/house_name_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/aguafina_script"
-                android:textColor="@color/hp_text_color"
-                android:textSize="32sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/species_text_view"
-                app:layout_constraintTop_toBottomOf="@+id/species_text_view"
-                app:text="@{viewmodel.wizard.house}" />
-
-            <TextView
-                android:id="@+id/ancestry_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/aguafina_script"
-                app:text="@{viewmodel.wizard.ancestry}"
-                android:textColor="@color/hp_text_color"
-                android:textSize="32sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/house_name_text_view"
-                app:layout_constraintTop_toBottomOf="@+id/house_name_text_view" />
-
-            <TextView
-                android:id="@+id/alive_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/aguafina_script"
-                android:layout_marginTop="16dp"
-                app:isTheWizardAlive="@{viewmodel.wizard.alive}"
-                android:textColor="@color/hp_text_color"
-                android:textSize="32sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/ancestry_text_view"
-                app:layout_constraintTop_toBottomOf="@+id/ancestry_text_view" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </LinearLayout>
 </layout>
