@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Detail Screen -->
+    <dimen name="details_screen_text_size">32sp</dimen>
+
+    <!-- Error Message -->
+    <dimen name="error_message_image_width_size">140dp</dimen>
+    <dimen name="error_message_image_height_size">140dp</dimen>
+    <dimen name="error_message_text_size">48sp</dimen>
+
+    <!-- Wizard Row -->
+    <dimen name="wizard_row_text_size">24sp</dimen>
+
+</resources>
