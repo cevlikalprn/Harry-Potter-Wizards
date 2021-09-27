@@ -10,9 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.cevlikalprn.harrypotterwizards.R
 import com.cevlikalprn.harrypotterwizards.databinding.FragmentWizardDetailsBinding
-import com.cevlikalprn.harrypotterwizards.models.WizardItem
 import com.cevlikalprn.harrypotterwizards.viewmodel.WizardDetailsViewModel
-import com.squareup.picasso.Picasso
 
 class WizardDetailsFragment : Fragment() {
 

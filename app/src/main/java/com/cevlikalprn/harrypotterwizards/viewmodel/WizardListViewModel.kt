@@ -4,15 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.cevlikalprn.harrypotterwizards.models.Wizard
 import com.cevlikalprn.harrypotterwizards.data.repository.WizardRepository
+import com.cevlikalprn.harrypotterwizards.models.Wizard
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
 class WizardListViewModel(private val repository: WizardRepository) : ViewModel() {
 
-    private val _wizards: MutableLiveData<Wizard> = MutableLiveData()
-    val wizards: LiveData<Wizard>
+    private val _wizards: MutableLiveData<List<Wizard>> = MutableLiveData()
+    val wizards: LiveData<List<Wizard>>
         get() = _wizards
 
     private val _errorMessage: MutableLiveData<String> = MutableLiveData()

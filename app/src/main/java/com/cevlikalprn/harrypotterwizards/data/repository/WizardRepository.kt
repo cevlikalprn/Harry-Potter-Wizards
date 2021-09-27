@@ -6,7 +6,9 @@ import retrofit2.Response
 
 class WizardRepository(private val remoteDataSource: RemoteDataSource) {
 
-    suspend fun getWizards(): Response<Wizard>{
+    //Repository'nin kullanımı pek doğru değil
+
+    suspend fun getWizards(): Response<List<Wizard>>{
         return remoteDataSource.getWizards()
     }
 
