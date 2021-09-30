@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/wizardsFragment"
         android:name="com.cevlikalprn.harrypotterwizards.list.WizardListFragment"
-        android:label="fragment_wizards"
+        android:label="Wizards"
         tools:layout="@layout/fragment_wizard_list" >
         <action
             android:id="@+id/action_wizardsFragment_to_wizardDetailsFragment"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/wizardDetailsFragment"
         android:name="com.cevlikalprn.harrypotterwizards.detail.WizardDetailsFragment"
-        android:label="fragment_wizard_details"
+        android:label="Wizard Details"
         tools:layout="@layout/fragment_wizard_details" >
         <argument
             android:name="wizard"
