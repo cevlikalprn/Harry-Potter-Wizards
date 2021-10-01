@@ -31,7 +31,7 @@ class WizardListViewModel(private val repository: WizardRepository) : ViewModel(
 
     private suspend fun getWizards() {
         try {
-            val response = repository.getWizards()
+            val response = repository.remote.getWizards()
             if (response.isSuccessful) {
                 _wizards.value = response.body()
             } else {
