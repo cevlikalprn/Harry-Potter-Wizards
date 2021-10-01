@@ -1,5 +1,6 @@
 package com.cevlikalprn.harrypotterwizards.data.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 
@@ -7,6 +8,5 @@ import androidx.room.Query
 interface WizardDao {
 
     @Query("SELECT * FROM wizard_table")
-    fun getAllWizards(): List<WizardEntity>
-
+    fun getAllWizards(): LiveData<List<WizardEntity>>
 }

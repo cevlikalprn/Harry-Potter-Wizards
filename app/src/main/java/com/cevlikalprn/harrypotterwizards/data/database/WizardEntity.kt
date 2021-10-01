@@ -11,7 +11,7 @@ data class WizardEntity(
     @PrimaryKey(autoGenerate = true)
     var wizardId: Int = 0,
     @ColumnInfo(name = "wizard")
-    var wizard: Wizard,
+    val wizard: Wizard,
     @ColumnInfo(name = "is_favorite")
-    val isFavorite: Boolean
+    var isFavorite: Boolean
 )
