@@ -1,6 +1,7 @@
 package com.cevlikalprn.harrypotterwizards.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -9,7 +10,9 @@ import com.cevlikalprn.harrypotterwizards.model.Wizard
 import com.cevlikalprn.harrypotterwizards.list.WizardListFragmentDirections
 import com.squareup.picasso.Picasso
 
-class WizardAdapter() : RecyclerView.Adapter<WizardAdapter.MyViewHolder>() {
+class WizardAdapter(
+    private val onItemClicked: (Wizard) -> Unit
+) : RecyclerView.Adapter<WizardAdapter.MyViewHolder>() {
 
     var data = listOf<Wizard>()
         set(value) {
@@ -17,7 +20,9 @@ class WizardAdapter() : RecyclerView.Adapter<WizardAdapter.MyViewHolder>() {
             notifyDataSetChanged()
         }
 
-    class MyViewHolder(private val binding: WizardsRowLayoutBinding) :
+    class MyViewHolder(
+        private val binding: WizardsRowLayoutBinding
+    ) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Wizard) {
@@ -48,10 +53,8 @@ class WizardAdapter() : RecyclerView.Adapter<WizardAdapter.MyViewHolder>() {
         val item = data[position]
         holder.bind(item)
 
-        holder.itemView.setOnClickListener { view ->
-            view.findNavController().navigate(
-                WizardListFragmentDirections.actionWizardsFragmentToWizardDetailsFragment(item)
-            )
+        holder.itemView.setOnClickListener {
+            onItemClicked(item)
         }
     }
 

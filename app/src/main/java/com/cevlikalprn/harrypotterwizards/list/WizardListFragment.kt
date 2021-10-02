@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.cevlikalprn.harrypotterwizards.R
 import com.cevlikalprn.harrypotterwizards.adapter.WizardAdapter
 import com.cevlikalprn.harrypotterwizards.databinding.FragmentWizardListBinding
@@ -40,7 +42,11 @@ class WizardListFragment : Fragment() {
         binding.viewmodel = viewModel
 
         //adapter
-        val adapter = WizardAdapter()
+        val adapter = WizardAdapter{ wizard ->
+            findNavController().navigate(
+                WizardListFragmentDirections.actionWizardsFragmentToWizardDetailsFragment(wizard)
+            )
+        }
         binding.wizardListRecyclerView.adapter = adapter
 
         //wizards
