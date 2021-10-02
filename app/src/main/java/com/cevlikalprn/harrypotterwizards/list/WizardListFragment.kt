@@ -58,7 +58,7 @@ class WizardListFragment : Fragment() {
                     }
                 }
                 is NetworkResult.Loading -> {
-                    Picasso.get().load(R.drawable.loading_image).into(binding.networkStateImage)
+                    binding.networkStateImage.setImageResource(R.drawable.loading_image)
                 }
             }
         }
