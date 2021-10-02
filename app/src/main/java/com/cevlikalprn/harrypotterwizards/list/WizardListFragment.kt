@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.cevlikalprn.harrypotterwizards.R
 import com.cevlikalprn.harrypotterwizards.adapter.WizardAdapter
 import com.cevlikalprn.harrypotterwizards.databinding.FragmentWizardListBinding
 import com.cevlikalprn.harrypotterwizards.di.MyApplication
+import com.cevlikalprn.harrypotterwizards.model.Wizard
+import com.cevlikalprn.harrypotterwizards.util.NetworkResult
+import com.squareup.picasso.Picasso
 
 class WizardListFragment : Fragment() {
 
@@ -42,18 +44,34 @@ class WizardListFragment : Fragment() {
         binding.viewmodel = viewModel
 
         //adapter
-        val adapter = WizardAdapter{ wizard ->
-            findNavController().navigate(
-                WizardListFragmentDirections.actionWizardsFragmentToWizardDetailsFragment(wizard)
-            )
+        val adapter = WizardAdapter { wizard ->
+            navigateToDetailsFragment(wizard)
         }
         binding.wizardListRecyclerView.adapter = adapter
 
         //wizards
         viewModel.wizards.observe(viewLifecycleOwner) { wizards ->
-            adapter.data = wizards
+            when (wizards) {
+                is NetworkResult.Success -> adapter.data = wizards.data!!
+                is NetworkResult.Error -> {
+                    binding.apply {
+                        networkStateImage.setImageResource(R.drawable.ic_mood_bad)
+                        errorMessageTextView.text = wizards.errorMessage
+                        networkStateImage.visibility = View.VISIBLE
+                        errorMessageTextView.visibility = View.VISIBLE
+                    }
+                }
+                is NetworkResult.Loading -> {
+                    Picasso.get().load(R.drawable.loading_image).into(binding.networkStateImage)
+                }
+            }
         }
+    }
 
+    private fun navigateToDetailsFragment(wizard: Wizard) {
+        findNavController().navigate(
+            WizardListFragmentDirections.actionWizardsFragmentToWizardDetailsFragment(wizard)
+        )
     }
 
 }

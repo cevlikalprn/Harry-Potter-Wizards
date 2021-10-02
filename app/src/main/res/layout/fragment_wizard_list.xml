@@ -30,7 +30,7 @@
 
 
         <ImageView
-            android:id="@+id/mood_bad_image"
+            android:id="@+id/network_state_image"
             android:layout_width="@dimen/error_message_image_width_size"
             android:layout_height="@dimen/error_message_image_height_size"
             android:visibility="gone"
@@ -39,8 +39,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.30"
-            app:showErrorMessageIcon="@{viewmodel.errorMessage}"
-            app:srcCompat="@drawable/ic_mood_bad"
             app:tint="@color/hp_text_color" />
 
         <TextView
@@ -54,9 +52,7 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mood_bad_image"
-            app:showErrorMessageText="@{viewmodel.errorMessage}"
-            tools:text="Not Found" />
+            app:layout_constraintTop_toBottomOf="@+id/network_state_image"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

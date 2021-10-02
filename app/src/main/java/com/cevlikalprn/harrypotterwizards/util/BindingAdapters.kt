@@ -1,6 +1,5 @@
 package com.cevlikalprn.harrypotterwizards.util
 
-import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -20,19 +19,4 @@ fun setTheWizardImageUrl(imageView: ImageView, str: String) {
         .placeholder(R.drawable.loading_animation)
         .error(R.drawable.broken_image)
         .into(imageView)
-}
-
-@BindingAdapter("app:showErrorMessageText")
-fun showErrorMessageText(textView: TextView, errorMessage: String?) {
-    if (!errorMessage.isNullOrEmpty()) {
-        textView.text = errorMessage
-        textView.visibility = View.VISIBLE
-    }
-}
-
-@BindingAdapter("app:showErrorMessageIcon")
-fun showErrorMessageIcon(imageView: ImageView, errorMessage: String?) {
-    if (!errorMessage.isNullOrEmpty()) {
-        imageView.visibility = View.VISIBLE
-    }
 }
