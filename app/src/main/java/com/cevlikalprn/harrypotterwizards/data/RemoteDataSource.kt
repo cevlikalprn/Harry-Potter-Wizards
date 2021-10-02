@@ -6,7 +6,7 @@ import retrofit2.Response
 
 class RemoteDataSource(private val retrofit: HarryPotterService) {
 
-    suspend fun getWizards(): Response<List<Wizard>>{
+    suspend fun getWizards(): List<Wizard>{
         return retrofit.getWizards()
     }
 

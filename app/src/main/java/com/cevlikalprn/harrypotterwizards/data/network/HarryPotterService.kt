@@ -7,6 +7,6 @@ import retrofit2.http.GET
 interface HarryPotterService {
 
     @GET("api/characters")
-    suspend fun getWizards(): Response<List<Wizard>>
+    suspend fun getWizards(): List<Wizard>
 
 }

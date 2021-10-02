@@ -7,7 +7,7 @@
     <!-- Error Message -->
     <dimen name="error_message_image_width_size">140dp</dimen>
     <dimen name="error_message_image_height_size">140dp</dimen>
-    <dimen name="error_message_text_size">48sp</dimen>
+    <dimen name="error_message_text_size">16sp</dimen>
 
     <!-- Wizard Row -->
     <dimen name="wizard_row_text_size">24sp</dimen>
