@@ -15,7 +15,11 @@ fun isTheWizardAlive(textView: TextView, state: Boolean) {
 
 @BindingAdapter("app:setTheWizardImageUrl")
 fun setTheWizardImageUrl(imageView: ImageView, str: String) {
-    Picasso.get().load(str).into(imageView)
+    Picasso.get()
+        .load(str)
+        .placeholder(R.drawable.loading_animation)
+        .error(R.drawable.broken_image)
+        .into(imageView)
 }
 
 @BindingAdapter("app:showErrorMessageText")

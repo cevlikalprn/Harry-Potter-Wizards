@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.cevlikalprn.harrypotterwizards.R
 import com.cevlikalprn.harrypotterwizards.databinding.WizardsRowLayoutBinding
 import com.cevlikalprn.harrypotterwizards.model.Wizard
 import com.cevlikalprn.harrypotterwizards.list.WizardListFragmentDirections
@@ -31,7 +32,8 @@ class WizardAdapter(
                 wizardNameTextView.text = item.name
                 yearOfBirthTextView.text = item.yearOfBirth
                 houseTextView.text = item.house
-                Picasso.get().load(item.image).into(wizardImageView)
+                Picasso.get().load(item.image).placeholder(R.drawable.loading_animation)
+                    .error(R.drawable.broken_image).into(wizardImageView)
             }
         }
 
