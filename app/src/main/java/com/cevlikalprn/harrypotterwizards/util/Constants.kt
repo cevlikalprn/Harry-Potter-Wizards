@@ -6,5 +6,5 @@ object Constants {
 
     //Database
     const val DATABASE_NAME = "wizard_database"
-    const val WIZARDS_TABLE = "wizard_table"
+    const val WIZARDS_TABLE = "wizards_table"
 }

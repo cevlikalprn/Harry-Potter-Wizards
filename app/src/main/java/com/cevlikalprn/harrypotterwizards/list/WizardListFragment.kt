@@ -28,11 +28,11 @@ class WizardListFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val appContainer = (activity?.application as MyApplication).appContainer
+        val appContainer = (requireActivity().applicationContext as MyApplication).appContainer
+
         val viewModel =
             ViewModelProvider(
                 this,

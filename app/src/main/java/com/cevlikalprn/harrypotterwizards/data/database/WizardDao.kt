@@ -7,6 +7,6 @@ import androidx.room.Query
 @Dao
 interface WizardDao {
 
-    @Query("SELECT * FROM wizard_table")
+    @Query("SELECT * FROM wizards_table")
     fun getAllWizards(): LiveData<List<WizardEntity>>
 }
