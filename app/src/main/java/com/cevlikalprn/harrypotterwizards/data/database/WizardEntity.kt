@@ -13,5 +13,5 @@ data class WizardEntity(
     @ColumnInfo(name = "wizard")
     val wizard: Wizard,
     @ColumnInfo(name = "is_favorite")
-    var isFavorite: Boolean
+    var isFavorite: Boolean = false
 )
