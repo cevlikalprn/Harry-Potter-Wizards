@@ -39,10 +39,6 @@ class WizardListFragment : Fragment() {
                 appContainer.wizardListViewModelFactory
             ).get(WizardListViewModel::class.java)
 
-        //binding
-        binding.lifecycleOwner = this
-        binding.viewmodel = viewModel
-
         //adapter
         val adapter = WizardAdapter { wizard ->
             navigateToDetailsFragment(wizard)
