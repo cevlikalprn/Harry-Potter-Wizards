@@ -9,6 +9,7 @@ import com.cevlikalprn.harrypotterwizards.util.Constants.WIZARDS_TABLE
 @Entity(tableName = WIZARDS_TABLE)
 data class WizardEntity(
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "wizard_id")
     var wizardId: Int = 0,
     @ColumnInfo(name = "wizard")
     val wizard: Wizard,
