@@ -9,4 +9,8 @@ interface WizardDao {
 
     @Query("SELECT * FROM wizards_table")
     fun getAllWizards(): LiveData<List<WizardEntity>>
+
+    @Query("SELECT * FROM wizards_table WHERE is_favorite = 1")
+    fun getFavoriteWizards(): LiveData<List<WizardEntity>>
+
 }
