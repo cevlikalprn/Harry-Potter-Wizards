@@ -11,10 +11,10 @@ class WizardListViewModel(private val repository: WizardRepository) : ViewModel(
     val wizards = repository.allWizards
 
     init {
-        refreshDataFromRepositorty()
+        refreshDataFromRepository()
     }
 
-    private fun refreshDataFromRepositorty() {
+    private fun refreshDataFromRepository() {
         viewModelScope.launch {
             try {
                 repository.insertWizardsToDatabase()
@@ -23,19 +23,4 @@ class WizardListViewModel(private val repository: WizardRepository) : ViewModel(
             }
         }
     }
-
-/*
-    private fun getWizards() {
-        try {
-            val response = repository.allWizards.value
-            if (!response.isNullOrEmpty()) {
-                println("This line is not working")
-                _wizards.value = Result.Success(response)
-            }
-        } catch (e: Exception) {
-            _wizards.value = Result.Error(errorMessage = e.message)
-        }
-    }
-
- */
 }

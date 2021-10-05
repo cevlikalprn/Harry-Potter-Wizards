@@ -56,24 +56,3 @@ class WizardListFragment : Fragment() {
     }
 
 }
-
-/*
-* //wizards
-        viewModel.wizards.observe(viewLifecycleOwner) { wizards ->
-            when (wizards) {
-                is com.cevlikalprn.harrypotterwizards.util.Result.Success -> adapter.data =
-                    wizards.data!!
-                is com.cevlikalprn.harrypotterwizards.util.Result.Error -> {
-                    binding.apply {
-                        networkStateImage.setImageResource(R.drawable.ic_mood_bad)
-                        errorMessageTextView.text = wizards.errorMessage
-                        networkStateImage.visibility = View.VISIBLE
-                        errorMessageTextView.visibility = View.VISIBLE
-                    }
-                }
-                is com.cevlikalprn.harrypotterwizards.util.Result.Loading -> {
-                    binding.networkStateImage.setImageResource(R.drawable.loading_image)
-                }
-            }
-        }
-* */
