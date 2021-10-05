@@ -65,7 +65,7 @@ class WizardListFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.favorite_menu_item -> {
-                println("Menu")
+                findNavController().navigate(WizardListFragmentDirections.actionWizardsFragmentToFavoriteWizardsFragment())
             }
         }
         return super.onOptionsItemSelected(item)

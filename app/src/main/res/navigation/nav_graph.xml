@@ -9,24 +9,27 @@
         android:id="@+id/wizardsFragment"
         android:name="com.cevlikalprn.harrypotterwizards.list.WizardListFragment"
         android:label="Wizards"
-        tools:layout="@layout/fragment_wizard_list" >
+        tools:layout="@layout/fragment_wizard_list">
         <action
             android:id="@+id/action_wizardsFragment_to_wizardDetailsFragment"
             app:destination="@id/wizardDetailsFragment" />
+        <action
+            android:id="@+id/action_wizardsFragment_to_favoriteWizardsFragment"
+            app:destination="@id/favoriteWizardsFragment" />
     </fragment>
     <fragment
         android:id="@+id/wizardDetailsFragment"
         android:name="com.cevlikalprn.harrypotterwizards.detail.WizardDetailsFragment"
         android:label="Wizard Details"
-        tools:layout="@layout/fragment_wizard_details" >
+        tools:layout="@layout/fragment_wizard_details">
         <argument
             android:name="wizard"
             app:argType="com.cevlikalprn.harrypotterwizards.data.database.WizardEntity"
-            app:nullable="true"/>
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/favoriteWizardsFragment"
-        android:name="com.cevlikalprn.harrypotterwizards.FavoriteWizardsFragment"
+        android:name="com.cevlikalprn.harrypotterwizards.favorite.FavoriteWizardsFragment"
         android:label="fragment_favorite_wizards"
         tools:layout="@layout/fragment_favorite_wizards" />
 </navigation>
