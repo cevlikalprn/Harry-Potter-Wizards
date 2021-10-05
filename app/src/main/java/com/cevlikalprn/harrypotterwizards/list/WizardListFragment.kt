@@ -40,9 +40,9 @@ class WizardListFragment : Fragment() {
             ).get(WizardListViewModel::class.java)
 
         //adapter
-        val adapter = WizardAdapter { wizard ->
-            navigateToDetailsFragment(wizard)
-        }
+        val adapter = WizardAdapter(updateWizard = { viewModel.updateWizard(it) },
+            onItemClicked = { navigateToDetailsFragment(it) })
+
         binding.wizardListRecyclerView.adapter = adapter
 
         viewModel.wizards.observe(viewLifecycleOwner) { wizards ->
@@ -63,13 +63,11 @@ class WizardListFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.favorite_menu_item -> {
                 println("Menu")
             }
         }
         return super.onOptionsItemSelected(item)
     }
-
-
 }

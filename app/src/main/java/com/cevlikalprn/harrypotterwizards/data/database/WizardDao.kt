@@ -1,10 +1,7 @@
 package com.cevlikalprn.harrypotterwizards.data.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface WizardDao {
@@ -15,7 +12,10 @@ interface WizardDao {
     @Query("SELECT * FROM wizards_table WHERE is_favorite = 1")
     fun getFavoriteWizards(): LiveData<List<WizardEntity>>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert
     suspend fun insertAllWizards(wizards: List<WizardEntity>)
+
+    @Update
+    suspend fun updateWizard(wizard: WizardEntity)
 
 }

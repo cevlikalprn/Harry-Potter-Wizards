@@ -1,6 +1,5 @@
 package com.cevlikalprn.harrypotterwizards.model
 
-
 import com.google.gson.annotations.SerializedName
 
 data class Wizard(

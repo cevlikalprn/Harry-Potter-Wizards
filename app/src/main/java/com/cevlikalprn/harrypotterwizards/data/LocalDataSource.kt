@@ -13,4 +13,7 @@ class LocalDataSource(private val wizardDao: WizardDao) {
         wizardDao.insertAllWizards(wizards)
     }
 
+    suspend fun updateWizard(wizard: WizardEntity) {
+        wizardDao.updateWizard(wizard)
+    }
 }

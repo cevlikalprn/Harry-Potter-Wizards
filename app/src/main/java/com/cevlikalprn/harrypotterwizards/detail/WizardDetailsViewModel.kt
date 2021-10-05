@@ -8,5 +8,4 @@ class WizardDetailsViewModel: ViewModel() {
 
     val wizard = MutableLiveData<WizardEntity>()
 
-
 }

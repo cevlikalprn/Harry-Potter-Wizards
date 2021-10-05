@@ -10,6 +10,7 @@ import com.cevlikalprn.harrypotterwizards.databinding.WizardsRowLayoutBinding
 import com.squareup.picasso.Picasso
 
 class WizardAdapter(
+    private val updateWizard: (WizardEntity) -> Unit,
     private val onItemClicked: (WizardEntity) -> Unit
 ) : RecyclerView.Adapter<WizardAdapter.MyViewHolder>() {
 
@@ -24,13 +25,18 @@ class WizardAdapter(
     ) :
         RecyclerView.ViewHolder(binding.root) {
 
+        private var imageString: String? = null
+
         fun bind(item: WizardEntity) {
             binding.apply {
                 wizardNameTextView.text = item.name
                 yearOfBirthTextView.text = item.yearOfBirth
                 houseTextView.text = item.house
-                Picasso.get().load(item.image).placeholder(R.drawable.loading_animation)
+
+                imageString = if (item.image.isNotEmpty()) item.image else null
+                Picasso.get().load(imageString).placeholder(R.drawable.loading_animation)
                     .error(R.drawable.broken_image).into(wizardImageView)
+
                 if (item.isFavorite) favoriteImageView.setImageResource(R.drawable.star) else favoriteImageView.setImageResource(
                     R.drawable.empty_star
                 )
@@ -70,13 +76,13 @@ class WizardAdapter(
         favoriteImage.setOnClickListener {
             if (item.isFavorite) {
                 item.isFavorite = false
+                updateWizard(item)
                 favoriteImage.setImageResource(R.drawable.empty_star)
             } else {
                 item.isFavorite = true
+                updateWizard(item)
                 favoriteImage.setImageResource(R.drawable.star)
             }
         }
     }
-
-
 }

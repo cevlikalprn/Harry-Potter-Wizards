@@ -2,6 +2,7 @@ package com.cevlikalprn.harrypotterwizards.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
 import com.cevlikalprn.harrypotterwizards.data.repository.WizardRepository
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -23,4 +24,11 @@ class WizardListViewModel(private val repository: WizardRepository) : ViewModel(
             }
         }
     }
+
+    fun updateWizard(wizard: WizardEntity) {
+        viewModelScope.launch {
+            repository.updateWizard(wizard)
+        }
+    }
+
 }

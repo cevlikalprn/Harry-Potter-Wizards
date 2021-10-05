@@ -16,7 +16,6 @@ class WizardDetailsFragment : Fragment() {
     private lateinit var binding: FragmentWizardDetailsBinding
     private val args: WizardDetailsFragmentArgs by navArgs()
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,7 +24,6 @@ class WizardDetailsFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_wizard_details, container, false)
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -42,6 +40,4 @@ class WizardDetailsFragment : Fragment() {
         binding.viewmodel = viewModel
 
     }
-
-
 }

@@ -15,6 +15,8 @@ class WizardRepository(
 
     val allWizards: LiveData<List<WizardEntity>> = localDataSource.allWizards
 
+    val favoriteWizards: LiveData<List<WizardEntity>> = localDataSource.favoriteWizards
+
     suspend fun insertWizardsToDatabase() {
         withContext(Dispatchers.IO) {
             val wizards = remoteDataSource.getWizards()
@@ -37,5 +39,7 @@ class WizardRepository(
         }
     }
 
-
+    suspend fun updateWizard(wizard: WizardEntity) {
+        localDataSource.updateWizard(wizard)
+    }
 }
