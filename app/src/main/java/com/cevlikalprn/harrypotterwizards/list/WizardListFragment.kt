@@ -1,10 +1,8 @@
 package com.cevlikalprn.harrypotterwizards.list
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -18,6 +16,11 @@ class WizardListFragment : Fragment() {
 
     private lateinit var binding: FragmentWizardListBinding
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,7 +31,6 @@ class WizardListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val appContainer = (requireActivity().applicationContext as MyApplication).appContainer
 
         val viewModel =
@@ -54,5 +56,20 @@ class WizardListFragment : Fragment() {
             WizardListFragmentDirections.actionWizardsFragmentToWizardDetailsFragment(wizard)
         )
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.favorites_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.favorite_menu_item -> {
+                println("Menu")
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 
 }
