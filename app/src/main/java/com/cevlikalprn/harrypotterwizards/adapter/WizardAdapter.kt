@@ -1,21 +1,18 @@
 package com.cevlikalprn.harrypotterwizards.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.cevlikalprn.harrypotterwizards.R
+import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
 import com.cevlikalprn.harrypotterwizards.databinding.WizardsRowLayoutBinding
-import com.cevlikalprn.harrypotterwizards.model.Wizard
-import com.cevlikalprn.harrypotterwizards.list.WizardListFragmentDirections
 import com.squareup.picasso.Picasso
 
 class WizardAdapter(
-    private val onItemClicked: (Wizard) -> Unit
+    private val onItemClicked: (WizardEntity) -> Unit
 ) : RecyclerView.Adapter<WizardAdapter.MyViewHolder>() {
 
-    var data = listOf<Wizard>()
+    var data = listOf<WizardEntity>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -26,7 +23,7 @@ class WizardAdapter(
     ) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Wizard) {
+        fun bind(item: WizardEntity) {
 
             binding.apply {
                 wizardNameTextView.text = item.name

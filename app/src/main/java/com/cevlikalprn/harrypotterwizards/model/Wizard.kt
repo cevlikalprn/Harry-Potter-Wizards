@@ -1,10 +1,8 @@
 package com.cevlikalprn.harrypotterwizards.model
 
-import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
+import com.google.gson.annotations.SerializedName
+
 data class Wizard(
     @SerializedName("alive")
     val alive: Boolean,
@@ -20,4 +18,4 @@ data class Wizard(
     val species: String,
     @SerializedName("yearOfBirth")
     val yearOfBirth: String
-) : Parcelable
+)

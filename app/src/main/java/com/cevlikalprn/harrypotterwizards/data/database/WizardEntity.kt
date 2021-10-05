@@ -3,10 +3,11 @@ package com.cevlikalprn.harrypotterwizards.data.database
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.cevlikalprn.harrypotterwizards.model.Wizard
 import com.cevlikalprn.harrypotterwizards.util.Constants.WIZARDS_TABLE
-import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
+import android.os.Parcelable
 
+@Parcelize
 @Entity(tableName = WIZARDS_TABLE)
 data class WizardEntity(
     @PrimaryKey(autoGenerate = true)
@@ -28,4 +29,4 @@ data class WizardEntity(
     val yearOfBirth: String,
     @ColumnInfo(name = "is_favorite")
     var isFavorite: Boolean = false
-)
+) : Parcelable

@@ -10,11 +10,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.cevlikalprn.harrypotterwizards.R
 import com.cevlikalprn.harrypotterwizards.adapter.WizardAdapter
+import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
 import com.cevlikalprn.harrypotterwizards.databinding.FragmentWizardListBinding
 import com.cevlikalprn.harrypotterwizards.di.MyApplication
-import com.cevlikalprn.harrypotterwizards.model.Wizard
-import com.cevlikalprn.harrypotterwizards.util.NetworkResult
-import com.squareup.picasso.Picasso
 
 class WizardListFragment : Fragment() {
 
@@ -45,11 +43,27 @@ class WizardListFragment : Fragment() {
         }
         binding.wizardListRecyclerView.adapter = adapter
 
-        //wizards
+        viewModel.wizards.observe(viewLifecycleOwner) { wizards ->
+            adapter.data = wizards
+        }
+
+    }
+
+    private fun navigateToDetailsFragment(wizard: WizardEntity) {
+        findNavController().navigate(
+            WizardListFragmentDirections.actionWizardsFragmentToWizardDetailsFragment(wizard)
+        )
+    }
+
+}
+
+/*
+* //wizards
         viewModel.wizards.observe(viewLifecycleOwner) { wizards ->
             when (wizards) {
-                is NetworkResult.Success -> adapter.data = wizards.data!!
-                is NetworkResult.Error -> {
+                is com.cevlikalprn.harrypotterwizards.util.Result.Success -> adapter.data =
+                    wizards.data!!
+                is com.cevlikalprn.harrypotterwizards.util.Result.Error -> {
                     binding.apply {
                         networkStateImage.setImageResource(R.drawable.ic_mood_bad)
                         errorMessageTextView.text = wizards.errorMessage
@@ -57,17 +71,9 @@ class WizardListFragment : Fragment() {
                         errorMessageTextView.visibility = View.VISIBLE
                     }
                 }
-                is NetworkResult.Loading -> {
+                is com.cevlikalprn.harrypotterwizards.util.Result.Loading -> {
                     binding.networkStateImage.setImageResource(R.drawable.loading_image)
                 }
             }
         }
-    }
-
-    private fun navigateToDetailsFragment(wizard: Wizard) {
-        findNavController().navigate(
-            WizardListFragmentDirections.actionWizardsFragmentToWizardDetailsFragment(wizard)
-        )
-    }
-
-}
+* */

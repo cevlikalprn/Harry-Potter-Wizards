@@ -1,40 +1,41 @@
 package com.cevlikalprn.harrypotterwizards.list
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cevlikalprn.harrypotterwizards.data.repository.WizardRepository
-import com.cevlikalprn.harrypotterwizards.model.Wizard
-import com.cevlikalprn.harrypotterwizards.util.NetworkResult
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
 class WizardListViewModel(private val repository: WizardRepository) : ViewModel() {
 
-    private val _wizards: MutableLiveData<NetworkResult<List<Wizard>>> = MutableLiveData()
-    val wizards: LiveData<NetworkResult<List<Wizard>>>
-        get() = _wizards
+    val wizards = repository.allWizards
 
     init {
-        loadWizards()
+        refreshDataFromRepositorty()
     }
 
-    private fun loadWizards() {
+    private fun refreshDataFromRepositorty() {
         viewModelScope.launch {
-            _wizards.value = NetworkResult.Loading()
-            getWizards()
+            try {
+                repository.insertWizardsToDatabase()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 
-    private suspend fun getWizards() {
+/*
+    private fun getWizards() {
         try {
-            val response = repository.remote.getWizards()
+            val response = repository.allWizards.value
             if (!response.isNullOrEmpty()) {
-                _wizards.value = NetworkResult.Success(response)
+                println("This line is not working")
+                _wizards.value = Result.Success(response)
             }
         } catch (e: Exception) {
-            _wizards.value = NetworkResult.Error(errorMessage = e.message)
+            _wizards.value = Result.Error(errorMessage = e.message)
         }
     }
+
+ */
 }
