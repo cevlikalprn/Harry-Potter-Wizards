@@ -2,6 +2,7 @@ package com.cevlikalprn.harrypotterwizards.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.cevlikalprn.harrypotterwizards.R
 import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
@@ -24,13 +25,15 @@ class WizardAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: WizardEntity) {
-
             binding.apply {
                 wizardNameTextView.text = item.name
                 yearOfBirthTextView.text = item.yearOfBirth
                 houseTextView.text = item.house
                 Picasso.get().load(item.image).placeholder(R.drawable.loading_animation)
                     .error(R.drawable.broken_image).into(wizardImageView)
+                if (item.isFavorite) favoriteImageView.setImageResource(R.drawable.star) else favoriteImageView.setImageResource(
+                    R.drawable.empty_star
+                )
             }
         }
 
@@ -55,7 +58,25 @@ class WizardAdapter(
         holder.itemView.setOnClickListener {
             onItemClicked(item)
         }
+
+        val favoriteImage = holder.itemView.findViewById<ImageView>(R.id.favorite_image_view)
+        setFavoriteStatus(favoriteImage, item)
+
     }
 
     override fun getItemCount(): Int = data.size
+
+    private fun setFavoriteStatus(favoriteImage: ImageView, item: WizardEntity) {
+        favoriteImage.setOnClickListener {
+            if (item.isFavorite) {
+                item.isFavorite = false
+                favoriteImage.setImageResource(R.drawable.empty_star)
+            } else {
+                item.isFavorite = true
+                favoriteImage.setImageResource(R.drawable.star)
+            }
+        }
+    }
+
+
 }
