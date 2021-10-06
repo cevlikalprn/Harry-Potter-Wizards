@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.cevlikalprn.harrypotterwizards.R
 import com.cevlikalprn.harrypotterwizards.adapter.FavoriteWizardsAdapter
 import com.cevlikalprn.harrypotterwizards.databinding.FragmentFavoriteWizardsBinding
-import com.cevlikalprn.harrypotterwizards.di.MyApplication
+import com.cevlikalprn.harrypotterwizards.di.HarryPotterWizardsApplication
 
 class FavoriteWizardsFragment : Fragment() {
 
@@ -28,7 +28,7 @@ class FavoriteWizardsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val appContainer = (requireActivity().application as MyApplication).appContainer
+        val appContainer = (requireActivity().application as HarryPotterWizardsApplication).appContainer
 
         val viewModel = ViewModelProvider(this, appContainer.favoriteWizardsViewModel).get(
             FavoriteWizardsViewModel::class.java

@@ -10,7 +10,7 @@ import com.cevlikalprn.harrypotterwizards.R
 import com.cevlikalprn.harrypotterwizards.adapter.WizardListAdapter
 import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
 import com.cevlikalprn.harrypotterwizards.databinding.FragmentWizardListBinding
-import com.cevlikalprn.harrypotterwizards.di.MyApplication
+import com.cevlikalprn.harrypotterwizards.di.HarryPotterWizardsApplication
 
 class WizardListFragment : Fragment() {
 
@@ -31,7 +31,7 @@ class WizardListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val appContainer = (requireActivity().applicationContext as MyApplication).appContainer
+        val appContainer = (requireActivity().applicationContext as HarryPotterWizardsApplication).appContainer
 
         val viewModel =
             ViewModelProvider(
