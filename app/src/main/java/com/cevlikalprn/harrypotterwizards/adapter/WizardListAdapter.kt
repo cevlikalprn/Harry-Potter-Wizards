@@ -14,7 +14,7 @@ class WizardListAdapter(
     private val onItemClicked: (WizardEntity) -> Unit
 ) : RecyclerView.Adapter<WizardListAdapter.MyViewHolder>() {
 
-    var data = listOf<WizardEntity>()
+    var wizards = listOf<WizardEntity>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -58,7 +58,7 @@ class WizardListAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val item = data[position]
+        val item = wizards[position]
         holder.bind(item)
 
         holder.itemView.setOnClickListener {
@@ -70,7 +70,7 @@ class WizardListAdapter(
 
     }
 
-    override fun getItemCount(): Int = data.size
+    override fun getItemCount(): Int = wizards.size
 
     private fun setFavoriteStatus(favoriteImage: ImageView, item: WizardEntity) {
         favoriteImage.setOnClickListener {

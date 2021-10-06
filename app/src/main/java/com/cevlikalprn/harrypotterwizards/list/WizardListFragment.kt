@@ -46,7 +46,7 @@ class WizardListFragment : Fragment() {
         binding.wizardListRecyclerView.adapter = adapter
 
         viewModel.wizards.observe(viewLifecycleOwner) { wizards ->
-            adapter.data = wizards
+            adapter.wizards = wizards
         }
 
     }
