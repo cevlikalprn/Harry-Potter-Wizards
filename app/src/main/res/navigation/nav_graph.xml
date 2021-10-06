@@ -30,6 +30,6 @@
     <fragment
         android:id="@+id/favoriteWizardsFragment"
         android:name="com.cevlikalprn.harrypotterwizards.favorite.FavoriteWizardsFragment"
-        android:label="fragment_favorite_wizards"
+        android:label="Favorite Wizards"
         tools:layout="@layout/fragment_favorite_wizards" />
 </navigation>
