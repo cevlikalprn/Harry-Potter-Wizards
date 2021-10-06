@@ -22,8 +22,7 @@ class WizardListAdapter(
 
     class MyViewHolder(
         private val binding: WizardsRowLayoutBinding
-    ) :
-        RecyclerView.ViewHolder(binding.root) {
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         private var imageString: String? = null
 
