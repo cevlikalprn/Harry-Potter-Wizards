@@ -8,15 +8,15 @@ import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
 import com.cevlikalprn.harrypotterwizards.databinding.WizardsRowLayoutBinding
 import com.squareup.picasso.Picasso
 
-class FavoriteWizardsAdapter() : RecyclerView.Adapter<FavoriteWizardsAdapter.MyViewHolder>() {
+class FavoriteWizardsAdapter() : RecyclerView.Adapter<FavoriteWizardsAdapter.ViewHolder>() {
 
-    var data = listOf<WizardEntity>()
+    var favoriteWizards = listOf<WizardEntity>()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
-    class MyViewHolder(private val binding: WizardsRowLayoutBinding) :
+    class ViewHolder(private val binding: WizardsRowLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         private var imageString: String? = null
@@ -38,24 +38,26 @@ class FavoriteWizardsAdapter() : RecyclerView.Adapter<FavoriteWizardsAdapter.MyV
         }
 
         companion object {
-            fun from(parent: ViewGroup): MyViewHolder {
+            fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = WizardsRowLayoutBinding.inflate(layoutInflater)
-                return MyViewHolder(binding)
+                val binding = WizardsRowLayoutBinding.inflate(layoutInflater, parent, false)
+                return ViewHolder(binding)
             }
         }
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder.from(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        println("onCreateViewHolder")
+        return ViewHolder.from(parent)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val item = data[position]
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        println("onBindViewHolder")
+        val item = favoriteWizards[position]
         holder.bind(item)
     }
 
-    override fun getItemCount(): Int = data.size
+    override fun getItemCount(): Int = favoriteWizards.size
 
 }
