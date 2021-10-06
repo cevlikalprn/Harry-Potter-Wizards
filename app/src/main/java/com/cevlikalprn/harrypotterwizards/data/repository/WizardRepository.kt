@@ -20,8 +20,7 @@ class WizardRepository(
     suspend fun insertWizardsToDatabase() {
         withContext(Dispatchers.IO) {
             val wizards = remoteDataSource.getWizards()
-            val wizardList = asDatabaseModel(wizards)
-            localDataSource.insertAllWizards(wizardList)
+            localDataSource.insertAllWizards(asDatabaseModel(wizards))
         }
     }
 
