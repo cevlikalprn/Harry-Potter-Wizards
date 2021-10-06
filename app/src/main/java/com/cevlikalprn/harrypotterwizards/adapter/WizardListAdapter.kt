@@ -9,10 +9,10 @@ import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
 import com.cevlikalprn.harrypotterwizards.databinding.WizardsRowLayoutBinding
 import com.squareup.picasso.Picasso
 
-class WizardAdapter(
+class WizardListAdapter(
     private val updateWizard: (WizardEntity) -> Unit,
     private val onItemClicked: (WizardEntity) -> Unit
-) : RecyclerView.Adapter<WizardAdapter.MyViewHolder>() {
+) : RecyclerView.Adapter<WizardListAdapter.MyViewHolder>() {
 
     var data = listOf<WizardEntity>()
         set(value) {
