@@ -12,7 +12,7 @@ interface WizardDao {
     @Query("SELECT * FROM wizards_table WHERE is_favorite = 1")
     fun getFavoriteWizards(): LiveData<List<WizardEntity>>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertAllWizards(wizards: List<WizardEntity>)
 
     @Update
