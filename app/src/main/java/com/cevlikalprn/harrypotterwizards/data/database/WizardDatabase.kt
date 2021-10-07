@@ -24,6 +24,7 @@ abstract class WizardDatabase : RoomDatabase() {
                         WizardDatabase::class.java,
                         DATABASE_NAME
                     )
+                        .fallbackToDestructiveMigration()
                         .build()
                     INSTANCE = instance
                 }
