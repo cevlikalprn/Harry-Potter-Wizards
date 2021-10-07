@@ -10,15 +10,13 @@ import android.os.Parcelable
 @Parcelize
 @Entity(tableName = WIZARDS_TABLE)
 data class WizardEntity(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "wizard_id")
-    var wizardId: Int = 0,
     @ColumnInfo(name = "alive")
     var alive: Boolean,
     @ColumnInfo(name = "ancestry")
     val ancestry: String,
     @ColumnInfo(name = "house")
     val house: String,
+    @PrimaryKey
     @ColumnInfo(name = "image")
     val image: String,
     @ColumnInfo(name = "name")
