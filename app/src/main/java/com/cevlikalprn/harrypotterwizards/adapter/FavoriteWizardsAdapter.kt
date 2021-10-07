@@ -2,13 +2,16 @@ package com.cevlikalprn.harrypotterwizards.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.cevlikalprn.harrypotterwizards.R
 import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
 import com.cevlikalprn.harrypotterwizards.databinding.WizardsRowLayoutBinding
 import com.squareup.picasso.Picasso
 
-class FavoriteWizardsAdapter() : RecyclerView.Adapter<FavoriteWizardsAdapter.ViewHolder>() {
+class FavoriteWizardsAdapter(
+    private val updateWizard: (WizardEntity) -> Unit
+) : RecyclerView.Adapter<FavoriteWizardsAdapter.ViewHolder>() {
 
     var favoriteWizards = listOf<WizardEntity>()
         set(value) {
@@ -48,16 +51,30 @@ class FavoriteWizardsAdapter() : RecyclerView.Adapter<FavoriteWizardsAdapter.Vie
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        println("onCreateViewHolder")
         return ViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        println("onBindViewHolder")
         val item = favoriteWizards[position]
         holder.bind(item)
+
+        val favoriteImage = holder.itemView.findViewById<ImageView>(R.id.favorite_image_view)
+        setFavoriteStatus(favoriteImage, item)
     }
 
     override fun getItemCount(): Int = favoriteWizards.size
 
+    private fun setFavoriteStatus(favoriteImage: ImageView, wizard: WizardEntity) {
+        favoriteImage.setOnClickListener {
+            if (wizard.isFavorite) {
+                wizard.isFavorite = false
+                updateWizard(wizard)
+                favoriteImage.setImageResource(R.drawable.empty_star)
+            } else {
+                wizard.isFavorite = true
+                updateWizard(wizard)
+                favoriteImage.setImageResource(R.drawable.star)
+            }
+        }
+    }
 }

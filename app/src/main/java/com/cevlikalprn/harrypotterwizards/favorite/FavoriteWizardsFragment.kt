@@ -35,7 +35,7 @@ class FavoriteWizardsFragment : Fragment() {
         )
 
         //adapter
-        val adapter = FavoriteWizardsAdapter()
+        val adapter = FavoriteWizardsAdapter(updateWizard = {viewModel.updateWizard(it)})
         binding.favoriteWizardsRecyclerView.adapter = adapter
 
         viewModel.favoriteWizards.observe(viewLifecycleOwner) { favoriteWizards ->
