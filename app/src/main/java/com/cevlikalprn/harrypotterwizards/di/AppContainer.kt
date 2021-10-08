@@ -6,6 +6,7 @@ import com.cevlikalprn.harrypotterwizards.data.RemoteDataSource
 import com.cevlikalprn.harrypotterwizards.data.database.WizardDatabase
 import com.cevlikalprn.harrypotterwizards.data.network.HarryPotterService
 import com.cevlikalprn.harrypotterwizards.data.repository.WizardRepository
+import com.cevlikalprn.harrypotterwizards.detail.WizardDetailsViewModelFactory
 import com.cevlikalprn.harrypotterwizards.favorite.FavoriteWizardsViewModelFactory
 import com.cevlikalprn.harrypotterwizards.util.Constants
 import com.cevlikalprn.harrypotterwizards.list.WizardListViewModelFactory
@@ -27,5 +28,6 @@ class AppContainer(context: Context) {
     private val remoteDataSource by lazy { RemoteDataSource(retrofit) }
     private val wizardRepository by lazy { WizardRepository(remoteDataSource, localDataSource) }
     val wizardListViewModelFactory by lazy { WizardListViewModelFactory(wizardRepository) }
+    val wizardDetailsViewModelFactory by lazy { WizardDetailsViewModelFactory(wizardRepository) }
     val favoriteWizardsViewModel by lazy { FavoriteWizardsViewModelFactory(wizardRepository) }
 }
