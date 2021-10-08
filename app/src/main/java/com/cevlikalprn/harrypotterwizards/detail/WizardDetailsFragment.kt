@@ -28,16 +28,23 @@ class WizardDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val viewModel: WizardDetailsViewModel = ViewModelProvider(this).get(WizardDetailsViewModel::class.java)
+        val viewModel: WizardDetailsViewModel =
+            ViewModelProvider(this).get(WizardDetailsViewModel::class.java)
 
         val wizard = args.wizard
         if (wizard != null) {
             viewModel.wizard.value = wizard
+            setWizardFavoriteStatus(wizard.isFavorite)
         }
 
         //binding
         binding.lifecycleOwner = this
         binding.viewmodel = viewModel
 
+    }
+
+    private fun setWizardFavoriteStatus(isFavorite: Boolean) {
+        val icon: Int = if (isFavorite) R.drawable.star else R.drawable.empty_star
+        binding.favoriteImageView.setImageResource(icon)
     }
 }
