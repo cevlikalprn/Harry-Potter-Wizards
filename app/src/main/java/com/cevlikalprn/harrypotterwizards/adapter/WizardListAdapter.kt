@@ -8,7 +8,6 @@ import com.cevlikalprn.harrypotterwizards.R
 import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
 import com.cevlikalprn.harrypotterwizards.databinding.WizardsRowLayoutBinding
 import com.cevlikalprn.harrypotterwizards.util.loadWizardImage
-import com.squareup.picasso.Picasso
 
 class WizardListAdapter(
     private val adapterClickListener: AdapterClickListener
