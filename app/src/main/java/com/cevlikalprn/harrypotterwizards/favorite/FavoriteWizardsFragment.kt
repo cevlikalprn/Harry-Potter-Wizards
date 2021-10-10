@@ -9,14 +9,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.cevlikalprn.harrypotterwizards.R
+import com.cevlikalprn.harrypotterwizards.adapter.AdapterClickListener
 import com.cevlikalprn.harrypotterwizards.adapter.FavoriteWizardsAdapter
 import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
 import com.cevlikalprn.harrypotterwizards.databinding.FragmentFavoriteWizardsBinding
 import com.cevlikalprn.harrypotterwizards.di.HarryPotterWizardsApplication
 
-class FavoriteWizardsFragment : Fragment() {
+class FavoriteWizardsFragment : Fragment(), AdapterClickListener {
 
     private lateinit var binding: FragmentFavoriteWizardsBinding
+    private lateinit var viewModel: FavoriteWizardsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,15 +35,12 @@ class FavoriteWizardsFragment : Fragment() {
         val appContainer =
             (requireActivity().application as HarryPotterWizardsApplication).appContainer
 
-        val viewModel = ViewModelProvider(this, appContainer.favoriteWizardsViewModel).get(
+        viewModel = ViewModelProvider(this, appContainer.favoriteWizardsViewModel).get(
             FavoriteWizardsViewModel::class.java
         )
 
         //adapter
-        val adapter =
-            FavoriteWizardsAdapter(
-                updateWizard = { viewModel.updateWizard(it) },
-                onItemClicked = { navigateToDetailsFragment(it) })
+        val adapter = FavoriteWizardsAdapter(this)
 
         binding.favoriteWizardsRecyclerView.adapter = adapter
 
@@ -56,6 +55,14 @@ class FavoriteWizardsFragment : Fragment() {
                 wizard
             )
         )
+    }
+
+    override fun updateWizard(wizard: WizardEntity) {
+        viewModel.updateWizard(wizard)
+    }
+
+    override fun onItemClicked(wizard: WizardEntity) {
+        navigateToDetailsFragment(wizard)
     }
 
 }

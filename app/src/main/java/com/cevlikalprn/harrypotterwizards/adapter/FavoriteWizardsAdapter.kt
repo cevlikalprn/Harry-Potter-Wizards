@@ -10,8 +10,7 @@ import com.cevlikalprn.harrypotterwizards.databinding.WizardsRowLayoutBinding
 import com.squareup.picasso.Picasso
 
 class FavoriteWizardsAdapter(
-    private val updateWizard: (WizardEntity) -> Unit,
-    private val onItemClicked: (WizardEntity) -> Unit
+    private val adapterClickListener: AdapterClickListener
 ) : RecyclerView.Adapter<FavoriteWizardsAdapter.ViewHolder>() {
 
     var favoriteWizards = listOf<WizardEntity>()
@@ -59,7 +58,7 @@ class FavoriteWizardsAdapter(
         val item = favoriteWizards[position]
         holder.bind(item)
 
-        holder.itemView.setOnClickListener { onItemClicked(item) }
+        holder.itemView.setOnClickListener { adapterClickListener.onItemClicked(item) }
 
         val favoriteImage = holder.itemView.findViewById<ImageView>(R.id.favorite_image_view)
         setFavoriteStatus(favoriteImage, item)
@@ -71,11 +70,11 @@ class FavoriteWizardsAdapter(
         favoriteImage.setOnClickListener {
             if (wizard.isFavorite) {
                 wizard.isFavorite = false
-                updateWizard(wizard)
+                adapterClickListener.updateWizard(wizard)
                 favoriteImage.setImageResource(R.drawable.empty_star)
             } else {
                 wizard.isFavorite = true
-                updateWizard(wizard)
+                adapterClickListener.updateWizard(wizard)
                 favoriteImage.setImageResource(R.drawable.star)
             }
         }

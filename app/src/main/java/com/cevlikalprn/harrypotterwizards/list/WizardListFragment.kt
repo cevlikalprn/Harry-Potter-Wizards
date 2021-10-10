@@ -2,19 +2,22 @@ package com.cevlikalprn.harrypotterwizards.list
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Adapter
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.cevlikalprn.harrypotterwizards.R
+import com.cevlikalprn.harrypotterwizards.adapter.AdapterClickListener
 import com.cevlikalprn.harrypotterwizards.adapter.WizardListAdapter
 import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
 import com.cevlikalprn.harrypotterwizards.databinding.FragmentWizardListBinding
 import com.cevlikalprn.harrypotterwizards.di.HarryPotterWizardsApplication
 
-class WizardListFragment : Fragment() {
+class WizardListFragment : Fragment(), AdapterClickListener {
 
     private lateinit var binding: FragmentWizardListBinding
+    private lateinit var viewModel: WizardListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,17 +34,17 @@ class WizardListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val appContainer = (requireActivity().applicationContext as HarryPotterWizardsApplication).appContainer
+        val appContainer =
+            (requireActivity().applicationContext as HarryPotterWizardsApplication).appContainer
 
-        val viewModel =
+        viewModel =
             ViewModelProvider(
                 this,
                 appContainer.wizardListViewModelFactory
             ).get(WizardListViewModel::class.java)
 
         //adapter
-        val adapter = WizardListAdapter(updateWizard = { viewModel.updateWizard(it) },
-            onItemClicked = { navigateToDetailsFragment(it) })
+        val adapter = WizardListAdapter(this)
 
         binding.wizardListRecyclerView.adapter = adapter
 
@@ -69,5 +72,13 @@ class WizardListFragment : Fragment() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun updateWizard(wizard: WizardEntity) {
+        viewModel.updateWizard(wizard)
+    }
+
+    override fun onItemClicked(wizard: WizardEntity) {
+        navigateToDetailsFragment(wizard)
     }
 }
