@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 import com.cevlikalprn.harrypotterwizards.util.Constants.WIZARDS_TABLE
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
+import com.cevlikalprn.harrypotterwizards.model.Wizard
 
 @Parcelize
 @Entity(tableName = WIZARDS_TABLE)
@@ -28,3 +29,18 @@ data class WizardEntity(
     @ColumnInfo(name = "is_favorite")
     var isFavorite: Boolean = false
 ) : Parcelable
+
+
+fun asDatabaseModel(wizards: List<Wizard>): List<WizardEntity> {
+    return wizards.map {
+        WizardEntity(
+            alive = it.alive,
+            ancestry = it.ancestry,
+            house = it.house,
+            image = it.image,
+            name = it.name,
+            species = it.species,
+            yearOfBirth = it.yearOfBirth
+        )
+    }
+}

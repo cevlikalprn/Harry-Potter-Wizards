@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import com.cevlikalprn.harrypotterwizards.data.LocalDataSource
 import com.cevlikalprn.harrypotterwizards.data.RemoteDataSource
 import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
-import com.cevlikalprn.harrypotterwizards.model.Wizard
+import com.cevlikalprn.harrypotterwizards.data.database.asDatabaseModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -21,20 +21,6 @@ class WizardRepository(
         withContext(Dispatchers.IO) {
             val wizards = remoteDataSource.getWizards()
             localDataSource.insertAllWizards(asDatabaseModel(wizards))
-        }
-    }
-
-    private fun asDatabaseModel(wizards: List<Wizard>): List<WizardEntity> {
-        return wizards.map {
-            WizardEntity(
-                alive = it.alive,
-                ancestry = it.ancestry,
-                house = it.house,
-                image = it.image,
-                name = it.name,
-                species = it.species,
-                yearOfBirth = it.yearOfBirth
-            )
         }
     }
 
