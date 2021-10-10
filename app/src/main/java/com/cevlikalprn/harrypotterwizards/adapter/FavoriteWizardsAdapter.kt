@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cevlikalprn.harrypotterwizards.R
 import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
 import com.cevlikalprn.harrypotterwizards.databinding.WizardsRowLayoutBinding
+import com.cevlikalprn.harrypotterwizards.util.loadWizardImage
 import com.squareup.picasso.Picasso
 
 class FavoriteWizardsAdapter(
@@ -22,18 +23,12 @@ class FavoriteWizardsAdapter(
     class ViewHolder(private val binding: WizardsRowLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        private var imageString: String? = null
-
         fun bind(item: WizardEntity) {
             binding.apply {
                 wizardNameTextView.text = item.name
                 yearOfBirthTextView.text = item.yearOfBirth
                 houseTextView.text = item.house
-
-                imageString = if (item.image.isNotEmpty()) item.image else null
-                Picasso.get().load(imageString).placeholder(R.drawable.loading_animation)
-                    .error(R.drawable.broken_image).into(wizardImageView)
-
+                wizardImageView.loadWizardImage(wizardImageView.context, item.image)
                 if (item.isFavorite) favoriteImageView.setImageResource(R.drawable.star) else favoriteImageView.setImageResource(
                     R.drawable.empty_star
                 )
