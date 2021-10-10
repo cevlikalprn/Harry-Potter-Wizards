@@ -17,9 +17,9 @@ data class WizardEntity(
     val ancestry: String,
     @ColumnInfo(name = "house")
     val house: String,
-    @PrimaryKey
     @ColumnInfo(name = "image")
     val image: String,
+    @PrimaryKey
     @ColumnInfo(name = "name")
     val name: String,
     @ColumnInfo(name = "species")
