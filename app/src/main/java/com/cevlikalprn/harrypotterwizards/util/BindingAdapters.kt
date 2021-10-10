@@ -4,7 +4,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.cevlikalprn.harrypotterwizards.R
-import com.squareup.picasso.Picasso
 
 @BindingAdapter("app:isTheWizardAlive")
 fun isTheWizardAlive(textView: TextView, state: Boolean) {
@@ -13,11 +12,6 @@ fun isTheWizardAlive(textView: TextView, state: Boolean) {
 }
 
 @BindingAdapter("app:setTheWizardImageUrl")
-fun setTheWizardImageUrl(imageView: ImageView, str: String) {
-    val imageString: String? = if (str.isNotEmpty()) str else null
-    Picasso.get()
-        .load(imageString)
-        .placeholder(R.drawable.loading_animation)
-        .error(R.drawable.broken_image)
-        .into(imageView)
+fun setTheWizardImageUrl(imageView: ImageView, imageUrl: String) {
+    imageView.loadWizardImage(imageView.context, imageUrl)
 }
