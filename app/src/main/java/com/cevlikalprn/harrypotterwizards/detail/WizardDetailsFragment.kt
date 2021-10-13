@@ -15,7 +15,10 @@ import com.cevlikalprn.harrypotterwizards.di.HarryPotterWizardsApplication
 
 class WizardDetailsFragment : Fragment() {
 
-    private lateinit var binding: FragmentWizardDetailsBinding
+    private var _binding: FragmentWizardDetailsBinding? = null
+    private val binding: FragmentWizardDetailsBinding
+        get() = _binding!!
+
     private val args: WizardDetailsFragmentArgs by navArgs()
     private lateinit var viewModel: WizardDetailsViewModel
 
@@ -23,7 +26,7 @@ class WizardDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding =
+        _binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_wizard_details, container, false)
         return binding.root
     }
@@ -72,5 +75,10 @@ class WizardDetailsFragment : Fragment() {
 
     private fun updateWizard(wizard: WizardEntity) {
         viewModel.updateWizard(wizard)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -14,7 +14,10 @@ import com.cevlikalprn.harrypotterwizards.di.HarryPotterWizardsApplication
 
 class WizardListFragment : Fragment(), AdapterClickListener {
 
-    private lateinit var binding: FragmentWizardListBinding
+    private var _binding: FragmentWizardListBinding? = null
+    private val binding: FragmentWizardListBinding
+        get() = _binding!!
+
     private lateinit var viewModel: WizardListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,23 +26,23 @@ class WizardListFragment : Fragment(), AdapterClickListener {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentWizardListBinding.inflate(inflater, container, false)
+        _binding = FragmentWizardListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val appContainer =
-            (requireActivity().applicationContext as HarryPotterWizardsApplication).appContainer
+                (requireActivity().applicationContext as HarryPotterWizardsApplication).appContainer
 
         viewModel =
-            ViewModelProvider(
-                this,
-                appContainer.wizardListViewModelFactory
-            ).get(WizardListViewModel::class.java)
+                ViewModelProvider(
+                        this,
+                        appContainer.wizardListViewModelFactory
+                ).get(WizardListViewModel::class.java)
 
         //adapter
         val adapter = WizardListAdapter(this)
@@ -54,7 +57,7 @@ class WizardListFragment : Fragment(), AdapterClickListener {
 
     private fun navigateToDetailsFragment(wizard: WizardEntity) {
         findNavController().navigate(
-            WizardListFragmentDirections.actionWizardsFragmentToWizardDetailsFragment(wizard)
+                WizardListFragmentDirections.actionWizardsFragmentToWizardDetailsFragment(wizard)
         )
     }
 
@@ -79,4 +82,10 @@ class WizardListFragment : Fragment(), AdapterClickListener {
     override fun onItemClicked(wizard: WizardEntity) {
         navigateToDetailsFragment(wizard)
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }

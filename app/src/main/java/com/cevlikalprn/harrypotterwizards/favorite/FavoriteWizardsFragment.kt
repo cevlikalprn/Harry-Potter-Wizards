@@ -15,14 +15,17 @@ import com.cevlikalprn.harrypotterwizards.di.HarryPotterWizardsApplication
 
 class FavoriteWizardsFragment : Fragment(), AdapterClickListener {
 
-    private lateinit var binding: FragmentFavoriteWizardsBinding
+    private var _binding: FragmentFavoriteWizardsBinding? = null
+    private val binding: FragmentFavoriteWizardsBinding
+        get() = _binding!!
+
     private lateinit var viewModel: FavoriteWizardsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentFavoriteWizardsBinding.inflate(inflater, container, false)
+        _binding = FragmentFavoriteWizardsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -62,4 +65,8 @@ class FavoriteWizardsFragment : Fragment(), AdapterClickListener {
         navigateToDetailsFragment(wizard)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
