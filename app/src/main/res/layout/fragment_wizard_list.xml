@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/hp_app_color"
-    tools:context=".list.WizardListFragment">
+    tools:context=".ui.listscreen.WizardListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/wizard_list_recycler_view"

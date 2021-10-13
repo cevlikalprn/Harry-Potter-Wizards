@@ -6,10 +6,10 @@ import com.cevlikalprn.harrypotterwizards.data.RemoteDataSource
 import com.cevlikalprn.harrypotterwizards.data.database.WizardDatabase
 import com.cevlikalprn.harrypotterwizards.data.network.HarryPotterService
 import com.cevlikalprn.harrypotterwizards.data.repository.WizardRepository
-import com.cevlikalprn.harrypotterwizards.detail.WizardDetailsViewModelFactory
-import com.cevlikalprn.harrypotterwizards.favorite.FavoriteWizardsViewModelFactory
+import com.cevlikalprn.harrypotterwizards.ui.detailscreen.WizardDetailsViewModelFactory
+import com.cevlikalprn.harrypotterwizards.ui.favoritescreen.FavoriteWizardsViewModelFactory
 import com.cevlikalprn.harrypotterwizards.util.Constants
-import com.cevlikalprn.harrypotterwizards.list.WizardListViewModelFactory
+import com.cevlikalprn.harrypotterwizards.ui.listscreen.WizardListViewModelFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

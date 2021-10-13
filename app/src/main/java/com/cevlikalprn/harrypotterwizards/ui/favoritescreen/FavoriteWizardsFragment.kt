@@ -1,4 +1,4 @@
-package com.cevlikalprn.harrypotterwizards.favorite
+package com.cevlikalprn.harrypotterwizards.ui.favoritescreen
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

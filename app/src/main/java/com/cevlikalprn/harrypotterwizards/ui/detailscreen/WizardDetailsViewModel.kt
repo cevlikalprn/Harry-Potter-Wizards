@@ -1,4 +1,4 @@
-package com.cevlikalprn.harrypotterwizards.detail
+package com.cevlikalprn.harrypotterwizards.ui.detailscreen
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

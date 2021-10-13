@@ -7,13 +7,13 @@
 
         <variable
             name="viewmodel"
-            type="com.cevlikalprn.harrypotterwizards.detail.WizardDetailsViewModel" />
+            type="com.cevlikalprn.harrypotterwizards.ui.detailscreen.WizardDetailsViewModel" />
     </data>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".detail.WizardDetailsFragment"
+        tools:context=".ui.detailscreen.WizardDetailsFragment"
         android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout

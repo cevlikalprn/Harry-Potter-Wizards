@@ -1,4 +1,4 @@
-package com.cevlikalprn.harrypotterwizards.list
+package com.cevlikalprn.harrypotterwizards.ui.listscreen
 
 import android.os.Bundle
 import android.view.*

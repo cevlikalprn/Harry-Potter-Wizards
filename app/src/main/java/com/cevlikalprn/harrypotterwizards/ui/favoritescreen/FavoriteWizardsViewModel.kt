@@ -1,4 +1,4 @@
-package com.cevlikalprn.harrypotterwizards.favorite
+package com.cevlikalprn.harrypotterwizards.ui.favoritescreen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
