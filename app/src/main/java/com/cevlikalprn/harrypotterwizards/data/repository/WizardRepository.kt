@@ -5,6 +5,7 @@ import com.cevlikalprn.harrypotterwizards.data.LocalDataSource
 import com.cevlikalprn.harrypotterwizards.data.RemoteDataSource
 import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
 import com.cevlikalprn.harrypotterwizards.data.database.asDatabaseModel
+import com.cevlikalprn.harrypotterwizards.model.Wizard
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -13,13 +14,21 @@ class WizardRepository(
     private val localDataSource: LocalDataSource
 ) {
 
+    private var wizardsFromInternet: List<Wizard>? = null
+
     val allWizards: LiveData<List<WizardEntity>> = localDataSource.allWizards
 
     val favoriteWizards: LiveData<List<WizardEntity>> = localDataSource.favoriteWizards
 
-    suspend fun insertWizardsToDatabase() {
+    suspend fun getWizardsFromInternet(): List<Wizard> {
         withContext(Dispatchers.IO) {
-            val wizards = remoteDataSource.getWizards()
+            wizardsFromInternet = remoteDataSource.getWizards()
+        }
+        return wizardsFromInternet!!
+    }
+
+    suspend fun insertWizardsToDatabase(wizards: List<Wizard>) {
+        withContext(Dispatchers.IO) {
             localDataSource.insertAllWizards(asDatabaseModel(wizards))
         }
     }

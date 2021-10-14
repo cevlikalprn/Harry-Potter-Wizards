@@ -2,6 +2,7 @@ package com.cevlikalprn.harrypotterwizards.ui.listscreen
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -9,8 +10,10 @@ import com.cevlikalprn.harrypotterwizards.R
 import com.cevlikalprn.harrypotterwizards.adapter.AdapterClickListener
 import com.cevlikalprn.harrypotterwizards.adapter.WizardListAdapter
 import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
+import com.cevlikalprn.harrypotterwizards.data.database.asDatabaseModel
 import com.cevlikalprn.harrypotterwizards.databinding.FragmentWizardListBinding
 import com.cevlikalprn.harrypotterwizards.di.HarryPotterWizardsApplication
+import com.cevlikalprn.harrypotterwizards.util.NetworkResult
 
 class WizardListFragment : Fragment(), AdapterClickListener {
 
@@ -20,14 +23,16 @@ class WizardListFragment : Fragment(), AdapterClickListener {
 
     private lateinit var viewModel: WizardListViewModel
 
+    private lateinit var adapter: WizardListAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentWizardListBinding.inflate(inflater, container, false)
         return binding.root
@@ -36,29 +41,26 @@ class WizardListFragment : Fragment(), AdapterClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val appContainer =
-                (requireActivity().applicationContext as HarryPotterWizardsApplication).appContainer
+            (requireActivity().applicationContext as HarryPotterWizardsApplication).appContainer
 
         viewModel =
-                ViewModelProvider(
-                        this,
-                        appContainer.wizardListViewModelFactory
-                ).get(WizardListViewModel::class.java)
+            ViewModelProvider(
+                this,
+                appContainer.wizardListViewModelFactory
+            ).get(WizardListViewModel::class.java)
 
         //adapter
-        val adapter = WizardListAdapter(this)
-
+        adapter = WizardListAdapter(this)
         binding.wizardListRecyclerView.adapter = adapter
 
-        viewModel.wizards.observe(viewLifecycleOwner) { wizards ->
-            adapter.wizards = wizards
+        viewModel.wizardsFromDatabase.observe(viewLifecycleOwner) { wizards ->
+            if (!wizards.isNullOrEmpty()) {
+                adapter.wizards = wizards
+            } else {
+                ifNoResponseFromDatabase()
+            }
         }
 
-    }
-
-    private fun navigateToDetailsFragment(wizard: WizardEntity) {
-        findNavController().navigate(
-                WizardListFragmentDirections.actionWizardsFragmentToWizardDetailsFragment(wizard)
-        )
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -73,6 +75,32 @@ class WizardListFragment : Fragment(), AdapterClickListener {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun ifNoResponseFromDatabase() {
+        viewModel.wizardsFromInternet.observe(viewLifecycleOwner) { wizardsFromInternet ->
+            when (wizardsFromInternet) {
+                is NetworkResult.Success -> adapter.wizards =
+                    asDatabaseModel(wizardsFromInternet.data!!)
+                is NetworkResult.Error -> {
+                    binding.apply {
+                        networkStateImage.setImageResource(R.drawable.ic_mood_bad)
+                        errorMessageTextView.text = wizardsFromInternet.errorMessage
+                        networkStateImage.visibility = View.VISIBLE
+                        errorMessageTextView.visibility = View.VISIBLE
+                    }
+                }
+                is NetworkResult.Loading -> {
+                    //TODO
+                }
+            }
+        }
+    }
+
+    private fun navigateToDetailsFragment(wizard: WizardEntity) {
+        findNavController().navigate(
+            WizardListFragmentDirections.actionWizardsFragmentToWizardDetailsFragment(wizard)
+        )
     }
 
     override fun updateWizard(wizard: WizardEntity) {
