@@ -72,18 +72,22 @@ class WizardListFragment : Fragment(), AdapterClickListener {
     private fun ifNoResponseFromDatabase() {
         viewModel.wizardsFromInternet.observe(viewLifecycleOwner) { wizardsFromInternet ->
             when (wizardsFromInternet) {
-                is NetworkResult.Success -> adapter.wizards =
-                    asDatabaseModel(wizardsFromInternet.data!!)
+                is NetworkResult.Success -> {
+                    adapter.wizards =
+                        asDatabaseModel(wizardsFromInternet.data!!)
+                    binding.loadingProgressBar.visibility = View.GONE
+                }
                 is NetworkResult.Error -> {
                     binding.apply {
                         networkStateImage.setImageResource(R.drawable.ic_mood_bad)
                         errorMessageTextView.text = wizardsFromInternet.errorMessage
                         networkStateImage.visibility = View.VISIBLE
                         errorMessageTextView.visibility = View.VISIBLE
+                        loadingProgressBar.visibility = View.GONE
                     }
                 }
                 is NetworkResult.Loading -> {
-                    //TODO
+                    binding.loadingProgressBar.visibility = View.VISIBLE
                 }
             }
         }
