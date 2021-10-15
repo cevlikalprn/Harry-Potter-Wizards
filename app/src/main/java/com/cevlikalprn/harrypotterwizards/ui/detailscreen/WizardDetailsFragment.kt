@@ -6,13 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.cevlikalprn.harrypotterwizards.R
 import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
 import com.cevlikalprn.harrypotterwizards.databinding.FragmentWizardDetailsBinding
-import com.cevlikalprn.harrypotterwizards.di.HarryPotterWizardsApplication
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class WizardDetailsFragment : Fragment() {
 
     private var _binding: FragmentWizardDetailsBinding? = null
@@ -20,7 +21,7 @@ class WizardDetailsFragment : Fragment() {
         get() = _binding!!
 
     private val args: WizardDetailsFragmentArgs by navArgs()
-    private lateinit var viewModel: WizardDetailsViewModel
+    private val viewModel: WizardDetailsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,13 +34,6 @@ class WizardDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val appContainer =
-            (requireActivity().application as HarryPotterWizardsApplication).appContainer
-
-        viewModel = ViewModelProvider(this, appContainer.wizardDetailsViewModelFactory).get(
-            WizardDetailsViewModel::class.java
-        )
 
         val wizard = args.wizard
         if (wizard != null) {

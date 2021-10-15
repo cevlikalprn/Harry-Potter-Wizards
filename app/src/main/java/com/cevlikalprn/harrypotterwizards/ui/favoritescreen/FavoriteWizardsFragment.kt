@@ -5,21 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.cevlikalprn.harrypotterwizards.adapter.AdapterClickListener
 import com.cevlikalprn.harrypotterwizards.adapter.FavoriteWizardsAdapter
 import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
 import com.cevlikalprn.harrypotterwizards.databinding.FragmentFavoriteWizardsBinding
-import com.cevlikalprn.harrypotterwizards.di.HarryPotterWizardsApplication
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FavoriteWizardsFragment : Fragment(), AdapterClickListener {
 
     private var _binding: FragmentFavoriteWizardsBinding? = null
     private val binding: FragmentFavoriteWizardsBinding
         get() = _binding!!
 
-    private lateinit var viewModel: FavoriteWizardsViewModel
+    private val viewModel: FavoriteWizardsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,12 +33,6 @@ class FavoriteWizardsFragment : Fragment(), AdapterClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val appContainer =
-            (requireActivity().application as HarryPotterWizardsApplication).appContainer
-
-        viewModel = ViewModelProvider(this, appContainer.favoriteWizardsViewModel).get(
-            FavoriteWizardsViewModel::class.java
-        )
 
         //adapter
         val adapter = FavoriteWizardsAdapter(this)

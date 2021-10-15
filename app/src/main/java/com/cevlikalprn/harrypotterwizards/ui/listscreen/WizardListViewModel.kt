@@ -8,10 +8,13 @@ import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
 import com.cevlikalprn.harrypotterwizards.data.repository.WizardRepository
 import com.cevlikalprn.harrypotterwizards.model.Wizard
 import com.cevlikalprn.harrypotterwizards.util.NetworkResult
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.lang.Exception
+import javax.inject.Inject
 
-class WizardListViewModel(private val repository: WizardRepository) : ViewModel() {
+@HiltViewModel
+class WizardListViewModel @Inject constructor(private val repository: WizardRepository) : ViewModel() {
 
     private var _wizardsFromInternet: MutableLiveData<NetworkResult<List<Wizard>>> =
         MutableLiveData()

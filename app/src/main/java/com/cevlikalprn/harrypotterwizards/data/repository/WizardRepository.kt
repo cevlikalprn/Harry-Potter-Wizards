@@ -6,10 +6,13 @@ import com.cevlikalprn.harrypotterwizards.data.RemoteDataSource
 import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
 import com.cevlikalprn.harrypotterwizards.data.database.asDatabaseModel
 import com.cevlikalprn.harrypotterwizards.model.Wizard
+import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class WizardRepository(
+@ViewModelScoped
+class WizardRepository @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource
 ) {
