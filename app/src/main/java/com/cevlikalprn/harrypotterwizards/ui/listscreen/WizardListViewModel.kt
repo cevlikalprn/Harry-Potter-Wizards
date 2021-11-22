@@ -5,23 +5,29 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
-import com.cevlikalprn.harrypotterwizards.data.repository.WizardRepository
 import com.cevlikalprn.harrypotterwizards.model.Wizard
+import com.cevlikalprn.harrypotterwizards.usecase.FetchWizardsUseCase
+import com.cevlikalprn.harrypotterwizards.usecase.InsertWizardsToDatabaseUseCase
+import com.cevlikalprn.harrypotterwizards.usecase.UpdateWizardStatusUseCase
 import com.cevlikalprn.harrypotterwizards.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
-class WizardListViewModel @Inject constructor(private val repository: WizardRepository) : ViewModel() {
+class WizardListViewModel @Inject constructor(
+    private val fetchWizardsUseCase: FetchWizardsUseCase,
+    private val insertWizardsToDatabaseUseCase: InsertWizardsToDatabaseUseCase,
+    private val updateWizardStatusUseCase: UpdateWizardStatusUseCase
+) : ViewModel() {
 
     private var _wizardsFromInternet: MutableLiveData<NetworkResult<List<Wizard>>> =
         MutableLiveData()
     val wizardsFromInternet: LiveData<NetworkResult<List<Wizard>>>
         get() = _wizardsFromInternet
 
-    val wizardsFromDatabase: LiveData<List<WizardEntity>> = repository.allWizards
+    val wizardsFromDatabase: LiveData<List<WizardEntity>> =
+        fetchWizardsUseCase.fetchWizardsFromDatabase
 
     init {
         refreshDataFromRepository()
@@ -31,10 +37,10 @@ class WizardListViewModel @Inject constructor(private val repository: WizardRepo
         _wizardsFromInternet.value = NetworkResult.Loading()
         viewModelScope.launch {
             try {
-                val dataFromInternet = repository.getWizardsFromInternet()
+                val dataFromInternet = fetchWizardsUseCase.fetchWizardsFromInternet()
                 if (!dataFromInternet.isNullOrEmpty()) {
                     _wizardsFromInternet.value = NetworkResult.Success(dataFromInternet)
-                    repository.insertWizardsToDatabase((_wizardsFromInternet.value as NetworkResult.Success<List<Wizard>>).data!!)
+                    insertWizardsToDatabaseUseCase.insertWizardsToDatabase((_wizardsFromInternet.value as NetworkResult.Success<List<Wizard>>).data!!)
                 }
             } catch (e: Exception) {
                 _wizardsFromInternet.value = NetworkResult.Error(null, e.message)
@@ -44,19 +50,7 @@ class WizardListViewModel @Inject constructor(private val repository: WizardRepo
 
     fun updateWizard(wizard: WizardEntity) {
         viewModelScope.launch {
-            repository.updateWizard(wizard)
+            updateWizardStatusUseCase.updateWizard(wizard)
         }
     }
-
 }
-
-/*
-* when (_wizardsFromInternet.value) {
-                    is NetworkResult.Success -> repository.insertWizardsToDatabase(
-                        (_wizardsFromInternet.value as NetworkResult.Success<List<Wizard>>).data!!
-                    )
-                    is NetworkResult.Error -> println("error")
-                    is NetworkResult.Loading -> println("loading")
-                }
-*
-* */
