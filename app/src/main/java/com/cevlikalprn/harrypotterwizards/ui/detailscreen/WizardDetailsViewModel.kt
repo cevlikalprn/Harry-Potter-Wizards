@@ -17,7 +17,7 @@ class WizardDetailsViewModel @Inject constructor(private val updateWizardStatusU
 
     fun updateWizard(wizard: WizardEntity) {
         viewModelScope.launch {
-            updateWizardStatusUseCase.updateWizard(wizard)
+            updateWizardStatusUseCase(wizard)
         }
     }
 
