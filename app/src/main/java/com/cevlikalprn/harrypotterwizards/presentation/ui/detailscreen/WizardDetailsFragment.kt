@@ -1,4 +1,4 @@
-package com.cevlikalprn.harrypotterwizards.ui.detailscreen
+package com.cevlikalprn.harrypotterwizards.presentation.ui.detailscreen
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

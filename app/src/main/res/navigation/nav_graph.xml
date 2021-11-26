@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/wizardsFragment"
-        android:name="com.cevlikalprn.harrypotterwizards.ui.listscreen.WizardListFragment"
+        android:name="com.cevlikalprn.harrypotterwizards.presentation.ui.listscreen.WizardListFragment"
         android:label="Wizards"
         tools:layout="@layout/fragment_wizard_list">
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/wizardDetailsFragment"
-        android:name="com.cevlikalprn.harrypotterwizards.ui.detailscreen.WizardDetailsFragment"
+        android:name="com.cevlikalprn.harrypotterwizards.presentation.ui.detailscreen.WizardDetailsFragment"
         android:label="Wizard Details"
         tools:layout="@layout/fragment_wizard_details">
         <argument
@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoriteWizardsFragment"
-        android:name="com.cevlikalprn.harrypotterwizards.ui.favoritescreen.FavoriteWizardsFragment"
+        android:name="com.cevlikalprn.harrypotterwizards.presentation.ui.favoritescreen.FavoriteWizardsFragment"
         android:label="Favorite Wizards"
         tools:layout="@layout/fragment_favorite_wizards" >
         <action

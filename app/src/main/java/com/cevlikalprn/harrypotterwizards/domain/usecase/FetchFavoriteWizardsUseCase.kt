@@ -1,4 +1,4 @@
-package com.cevlikalprn.harrypotterwizards.usecase
+package com.cevlikalprn.harrypotterwizards.domain.usecase
 
 import androidx.lifecycle.LiveData
 import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity

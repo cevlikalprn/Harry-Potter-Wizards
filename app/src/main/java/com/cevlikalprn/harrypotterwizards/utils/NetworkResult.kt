@@ -1,4 +1,4 @@
-package com.cevlikalprn.harrypotterwizards.util
+package com.cevlikalprn.harrypotterwizards.utils
 
 sealed class NetworkResult<T>(
     val data: T? = null,

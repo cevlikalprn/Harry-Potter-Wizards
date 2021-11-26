@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.cevlikalprn.harrypotterwizards.data.database.WizardDao
 import com.cevlikalprn.harrypotterwizards.data.database.WizardDatabase
-import com.cevlikalprn.harrypotterwizards.util.Constants.DATABASE_NAME
+import com.cevlikalprn.harrypotterwizards.utils.Constants.DATABASE_NAME
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
