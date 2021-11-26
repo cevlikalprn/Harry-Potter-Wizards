@@ -1,4 +1,4 @@
-package com.cevlikalprn.harrypotterwizards.util
+package com.cevlikalprn.harrypotterwizards.utils
 
 import android.content.Context
 import android.widget.ImageView

@@ -1,4 +1,4 @@
-package com.cevlikalprn.harrypotterwizards.model
+package com.cevlikalprn.harrypotterwizards.domain.model
 
 import com.google.gson.annotations.SerializedName
 

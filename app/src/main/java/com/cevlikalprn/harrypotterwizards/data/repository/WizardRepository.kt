@@ -5,7 +5,7 @@ import com.cevlikalprn.harrypotterwizards.data.LocalDataSource
 import com.cevlikalprn.harrypotterwizards.data.RemoteDataSource
 import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
 import com.cevlikalprn.harrypotterwizards.data.database.asDatabaseModel
-import com.cevlikalprn.harrypotterwizards.model.Wizard
+import com.cevlikalprn.harrypotterwizards.domain.model.Wizard
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

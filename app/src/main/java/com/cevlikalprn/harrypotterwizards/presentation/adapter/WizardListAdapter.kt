@@ -1,4 +1,4 @@
-package com.cevlikalprn.harrypotterwizards.adapter
+package com.cevlikalprn.harrypotterwizards.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cevlikalprn.harrypotterwizards.R
 import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
 import com.cevlikalprn.harrypotterwizards.databinding.WizardsRowLayoutBinding
-import com.cevlikalprn.harrypotterwizards.util.loadWizardImage
+import com.cevlikalprn.harrypotterwizards.utils.loadWizardImage
 
 class WizardListAdapter(
     private val adapterClickListener: AdapterClickListener

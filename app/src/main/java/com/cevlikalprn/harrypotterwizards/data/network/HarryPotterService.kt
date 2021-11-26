@@ -1,6 +1,6 @@
 package com.cevlikalprn.harrypotterwizards.data.network
 
-import com.cevlikalprn.harrypotterwizards.model.Wizard
+import com.cevlikalprn.harrypotterwizards.domain.model.Wizard
 import retrofit2.http.GET
 
 interface HarryPotterService {

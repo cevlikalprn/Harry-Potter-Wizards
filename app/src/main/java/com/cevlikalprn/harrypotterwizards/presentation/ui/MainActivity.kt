@@ -1,4 +1,4 @@
-package com.cevlikalprn.harrypotterwizards.ui
+package com.cevlikalprn.harrypotterwizards.presentation.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

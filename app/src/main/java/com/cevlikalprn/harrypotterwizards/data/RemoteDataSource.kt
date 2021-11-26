@@ -1,7 +1,7 @@
 package com.cevlikalprn.harrypotterwizards.data
 
 import com.cevlikalprn.harrypotterwizards.data.network.HarryPotterService
-import com.cevlikalprn.harrypotterwizards.model.Wizard
+import com.cevlikalprn.harrypotterwizards.domain.model.Wizard
 import javax.inject.Inject
 
 class RemoteDataSource @Inject constructor(private val retrofit: HarryPotterService) {

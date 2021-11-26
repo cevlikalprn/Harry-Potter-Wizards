@@ -1,7 +1,7 @@
 package com.cevlikalprn.harrypotterwizards.di
 
 import com.cevlikalprn.harrypotterwizards.data.network.HarryPotterService
-import com.cevlikalprn.harrypotterwizards.util.Constants
+import com.cevlikalprn.harrypotterwizards.utils.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

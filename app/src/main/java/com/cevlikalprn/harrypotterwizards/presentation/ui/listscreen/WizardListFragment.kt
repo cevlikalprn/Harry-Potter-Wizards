@@ -1,4 +1,4 @@
-package com.cevlikalprn.harrypotterwizards.ui.listscreen
+package com.cevlikalprn.harrypotterwizards.presentation.ui.listscreen
 
 import android.os.Bundle
 import android.view.*
@@ -6,12 +6,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.cevlikalprn.harrypotterwizards.R
-import com.cevlikalprn.harrypotterwizards.adapter.AdapterClickListener
-import com.cevlikalprn.harrypotterwizards.adapter.WizardListAdapter
+import com.cevlikalprn.harrypotterwizards.presentation.adapter.AdapterClickListener
+import com.cevlikalprn.harrypotterwizards.presentation.adapter.WizardListAdapter
 import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
 import com.cevlikalprn.harrypotterwizards.data.database.asDatabaseModel
 import com.cevlikalprn.harrypotterwizards.databinding.FragmentWizardListBinding
-import com.cevlikalprn.harrypotterwizards.util.NetworkResult
+import com.cevlikalprn.harrypotterwizards.utils.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

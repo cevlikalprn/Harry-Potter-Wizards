@@ -1,13 +1,16 @@
-package com.cevlikalprn.harrypotterwizards.ui.listscreen
+package com.cevlikalprn.harrypotterwizards.presentation.ui.listscreen
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
-import com.cevlikalprn.harrypotterwizards.model.Wizard
-import com.cevlikalprn.harrypotterwizards.usecase.*
-import com.cevlikalprn.harrypotterwizards.util.NetworkResult
+import com.cevlikalprn.harrypotterwizards.domain.usecase.FetchWizardsFromDatabaseUseCase
+import com.cevlikalprn.harrypotterwizards.domain.usecase.FetchWizardsFromInternetUseCase
+import com.cevlikalprn.harrypotterwizards.domain.usecase.InsertWizardsToDatabaseUseCase
+import com.cevlikalprn.harrypotterwizards.domain.usecase.UpdateWizardStatusUseCase
+import com.cevlikalprn.harrypotterwizards.domain.model.Wizard
+import com.cevlikalprn.harrypotterwizards.utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -15,7 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class WizardListViewModel @Inject constructor(
     private val fetchWizardsFromInternetUseCase: FetchWizardsFromInternetUseCase,
-    private val fetchWizardsFromDatabaseUseCase: FetchWizardsFromDatabaseUseCase,
+    fetchWizardsFromDatabaseUseCase: FetchWizardsFromDatabaseUseCase,
     private val insertWizardsToDatabaseUseCase: InsertWizardsToDatabaseUseCase,
     private val updateWizardStatusUseCase: UpdateWizardStatusUseCase
 ) : ViewModel() {
