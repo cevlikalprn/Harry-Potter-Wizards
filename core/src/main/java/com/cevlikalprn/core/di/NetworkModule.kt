@@ -1,4 +1,4 @@
-package com.cevlikalprn.harrypotterwizards.di
+package com.cevlikalprn.core.di
 
 import com.cevlikalprn.core.data.network.HarryPotterService
 import dagger.Module

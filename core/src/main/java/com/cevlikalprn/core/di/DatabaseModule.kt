@@ -1,4 +1,4 @@
-package com.cevlikalprn.harrypotterwizards.di
+package com.cevlikalprn.core.di
 
 import android.content.Context
 import androidx.room.Room
