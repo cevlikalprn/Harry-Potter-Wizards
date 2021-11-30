@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.cevlikalprn.harrypotterwizards.presentation.adapter.AdapterClickListener
 import com.cevlikalprn.harrypotterwizards.presentation.adapter.FavoriteWizardsAdapter
-import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
+import com.cevlikalprn.core.data.database.WizardEntity
 import com.cevlikalprn.harrypotterwizards.databinding.FragmentFavoriteWizardsBinding
 import dagger.hilt.android.AndroidEntryPoint
 

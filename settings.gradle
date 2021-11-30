@@ -8,3 +8,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Harry Potter Wizards"
 include ':app'
+include ':common'
+include ':core'

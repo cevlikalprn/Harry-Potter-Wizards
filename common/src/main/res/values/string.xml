@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="alive">Alive</string>
+    <string name="not_alive">Not Alive</string>
+
+</resources>

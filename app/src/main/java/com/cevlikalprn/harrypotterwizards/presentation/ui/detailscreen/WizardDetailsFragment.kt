@@ -9,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.cevlikalprn.harrypotterwizards.R
-import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
+import com.cevlikalprn.core.data.database.WizardEntity
 import com.cevlikalprn.harrypotterwizards.databinding.FragmentWizardDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
 

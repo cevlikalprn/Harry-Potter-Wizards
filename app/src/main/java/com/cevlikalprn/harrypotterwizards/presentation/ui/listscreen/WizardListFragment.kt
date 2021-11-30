@@ -8,10 +8,10 @@ import androidx.navigation.fragment.findNavController
 import com.cevlikalprn.harrypotterwizards.R
 import com.cevlikalprn.harrypotterwizards.presentation.adapter.AdapterClickListener
 import com.cevlikalprn.harrypotterwizards.presentation.adapter.WizardListAdapter
-import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
-import com.cevlikalprn.harrypotterwizards.data.database.asDatabaseModel
+import com.cevlikalprn.core.data.database.WizardEntity
+import com.cevlikalprn.core.data.database.asDatabaseModel
 import com.cevlikalprn.harrypotterwizards.databinding.FragmentWizardListBinding
-import com.cevlikalprn.harrypotterwizards.utils.NetworkResult
+import com.cevlikalprn.common.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -72,12 +72,12 @@ class WizardListFragment : Fragment(), AdapterClickListener {
     private fun ifNoResponseFromDatabase() {
         viewModel.wizardsFromInternet.observe(viewLifecycleOwner) { wizardsFromInternet ->
             when (wizardsFromInternet) {
-                is NetworkResult.Success -> {
+                is com.cevlikalprn.common.NetworkResult.Success -> {
                     adapter.wizards =
                         asDatabaseModel(wizardsFromInternet.data!!)
                     binding.loadingProgressBar.visibility = View.GONE
                 }
-                is NetworkResult.Error -> {
+                is com.cevlikalprn.common.NetworkResult.Error -> {
                     binding.apply {
                         networkStateImage.setImageResource(R.drawable.ic_mood_bad)
                         errorMessageTextView.text = wizardsFromInternet.errorMessage
@@ -86,7 +86,7 @@ class WizardListFragment : Fragment(), AdapterClickListener {
                         loadingProgressBar.visibility = View.GONE
                     }
                 }
-                is NetworkResult.Loading -> {
+                is com.cevlikalprn.common.NetworkResult.Loading -> {
                     binding.loadingProgressBar.visibility = View.VISIBLE
                 }
             }

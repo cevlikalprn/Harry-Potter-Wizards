@@ -3,8 +3,8 @@ package com.cevlikalprn.harrypotterwizards.presentation.ui.detailscreen
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
-import com.cevlikalprn.harrypotterwizards.domain.usecase.UpdateWizardStatusUseCase
+import com.cevlikalprn.core.data.database.WizardEntity
+import com.cevlikalprn.core.domain.usecase.UpdateWizardStatusUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

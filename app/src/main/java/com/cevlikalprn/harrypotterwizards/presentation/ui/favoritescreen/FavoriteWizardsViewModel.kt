@@ -2,10 +2,10 @@ package com.cevlikalprn.harrypotterwizards.presentation.ui.favoritescreen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
-import com.cevlikalprn.harrypotterwizards.domain.usecase.FetchFavoriteWizardsUseCase
-import com.cevlikalprn.harrypotterwizards.domain.usecase.FetchWizardsFromInternetUseCase
-import com.cevlikalprn.harrypotterwizards.domain.usecase.UpdateWizardStatusUseCase
+import com.cevlikalprn.core.data.database.WizardEntity
+import com.cevlikalprn.core.domain.usecase.FetchFavoriteWizardsUseCase
+import com.cevlikalprn.core.domain.usecase.FetchWizardsFromInternetUseCase
+import com.cevlikalprn.core.domain.usecase.UpdateWizardStatusUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

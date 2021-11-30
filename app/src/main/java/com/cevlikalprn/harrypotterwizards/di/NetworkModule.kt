@@ -1,7 +1,6 @@
 package com.cevlikalprn.harrypotterwizards.di
 
-import com.cevlikalprn.harrypotterwizards.data.network.HarryPotterService
-import com.cevlikalprn.harrypotterwizards.utils.Constants
+import com.cevlikalprn.core.data.network.HarryPotterService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,7 +25,7 @@ object NetworkModule {
         gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
+            .baseUrl(com.cevlikalprn.common.Constants.BASE_URL)
             .addConverterFactory(gsonConverterFactory)
             .build()
     }

@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.cevlikalprn.harrypotterwizards.R
-import com.cevlikalprn.harrypotterwizards.data.database.WizardEntity
+import com.cevlikalprn.core.data.database.WizardEntity
 import com.cevlikalprn.harrypotterwizards.databinding.WizardsRowLayoutBinding
-import com.cevlikalprn.harrypotterwizards.utils.loadWizardImage
+import com.cevlikalprn.common.loadWizardImage
 
 class FavoriteWizardsAdapter(
     private val adapterClickListener: AdapterClickListener
